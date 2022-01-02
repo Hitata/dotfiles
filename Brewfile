@@ -20,21 +20,42 @@ brew "exa" # improved ls with color
 brew "fasd" #
 brew "fzf"
 brew "fd" # better find
-brew "hub" # github commandline
 brew "jq" # jq json processor
 brew "mas" # mac app store command line
 
+# CLIs
+brew "gh" # github cli
+brew "awscli"
+
+brew "direnv"
+cask "ngrok"
+
+cask "rectangle"
 cask "kitty"
+cask "visual-studio-code"
 cask "bartender" # Control your mac menu bar
 cask "font-hack-nerd-font" # Add nerd font
+
+# language setup
+brew "yarn", args: ["ignore-dependencies"]
+brew "fnm"
+
+cask "figma"
+cask "slack"
+cask "zoom"
+cask "google-chrome"
+cask "google-drive"
+cask "fantastical"
+cask "notion"
 
 # Should install
 # cask "1password"
 # cask "1password-cli"
-# cask "fantastical"
 # cask "firefox"
-# cask "hammerspoon"
-# cask "karabiner-elements"
+
+# Keybinding
+cask "hammerspoon"
+cask "karabiner-elements"
 
 # Should see if really needed?
 # brew "autoconf"
