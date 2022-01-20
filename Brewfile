@@ -9,11 +9,16 @@ brew "bash"
 brew "coreutils" # cat, ls, rm
 brew "curl"
 brew "git"
-brew "neovim"
 brew "ripgrep"
 brew "stow"
 brew "tmux"
 brew "openssl"
+brew "fish"
+
+# Nvim related
+brew "neovim"
+brew "tree-sitter"
+# brew "luajit", args: ["HEAD"] # no bottle for Apple Silicon
 
 brew "reattach-to-user-namespace" # for tmux copy?
 brew "exa" # improved ls with color
@@ -40,8 +45,10 @@ cask "font-hack-nerd-font" # Add nerd font
 brew "yarn", args: ["ignore-dependencies"]
 brew "fnm"
 
+cask "vlc"
 cask "figma"
 cask "slack"
+cask "discord"
 cask "zoom"
 cask "google-chrome"
 cask "google-drive"
@@ -56,6 +63,9 @@ cask "notion"
 # Keybinding
 cask "hammerspoon"
 cask "karabiner-elements"
+
+# Games
+cask "steam"
 
 # Should see if really needed?
 # brew "autoconf"
