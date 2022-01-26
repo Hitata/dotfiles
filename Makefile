@@ -16,6 +16,8 @@ nvim:
 	stow -vSt ~ nvim
 karabiner:
 	stow -vSt ~ karabiner
+hammerspoon:
+	stow -vSt ~ hammerspoon 
 brew:
 brew:
 	brew bundle
