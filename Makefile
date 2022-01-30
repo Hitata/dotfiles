@@ -18,7 +18,8 @@ karabiner:
 	stow -vSt ~ karabiner
 hammerspoon:
 	stow -vSt ~ hammerspoon 
-brew:
+hyper:
+	stow -vSt ~ hyper
 brew:
 	brew bundle
 

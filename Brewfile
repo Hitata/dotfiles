@@ -36,11 +36,13 @@ brew "direnv"
 cask "ngrok"
 
 cask "kitty"
-cask "hyper"
 cask "rectangle"
 cask "visual-studio-code"
 cask "bartender" # Control your mac menu bar
 cask "font-hack-nerd-font" # Add nerd font
+
+cask "hyper"
+cask "fig"
 
 # language setup
 brew "yarn", args: ["ignore-dependencies"]
