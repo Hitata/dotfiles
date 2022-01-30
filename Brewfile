@@ -35,8 +35,9 @@ brew "awscli"
 brew "direnv"
 cask "ngrok"
 
-cask "rectangle"
 cask "kitty"
+cask "hyper"
+cask "rectangle"
 cask "visual-studio-code"
 cask "bartender" # Control your mac menu bar
 cask "font-hack-nerd-font" # Add nerd font
@@ -64,6 +65,9 @@ cask "notion"
 cask "hammerspoon"
 cask "karabiner-elements"
 
+# Stuff
+cask "brave-browser"
+
 # Games
 cask "steam"
 
@@ -73,7 +77,6 @@ cask "steam"
 # brew "gawk"
 # brew "gnupg"
 
-# cask "brave-browser"
 # cask "alfred"
 # cask "dash"
 # cask "grid-clock"
