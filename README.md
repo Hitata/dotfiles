@@ -15,6 +15,22 @@ softwareupdate --install-rosetta
 ## install typescript & tsserver
 - run `yarn global add typescript typescript-language-server`
 
+## Setup fish prompt
+- Add fish to know shells
+```bash
+which fish
+sudo su - c 'echo /opt/homebrew/bin/fish >> /etc/shells'
+```
+- Restart your terminal (kitty)
+- set fish as default shell
+```
+chsh -s /opt/homebrew/bin/fish
+```
+- Add brew binaries in fish path
+```
+fish_add_path -U /opt/homebrew/bin
+```
+[fish_add_path docs](https://fishshell.com/docs/current/cmds/fish_add_path.html)
 
 # TODO
 - [ ] Use stow to symlink all this to .config
