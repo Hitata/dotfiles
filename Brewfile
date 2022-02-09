@@ -14,6 +14,7 @@ brew "stow"
 brew "tmux"
 brew "openssl"
 brew "fish"
+brew "fisher"
 
 # Nvim related
 brew "neovim"

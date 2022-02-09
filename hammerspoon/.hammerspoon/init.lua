@@ -37,8 +37,13 @@ Hyper:bind({}, '1', function()
 end)
 
 Hyper:bind({}, '2', function()
+  App.launchOrFocusByBundleID('com.brave.Browser')
+end)
+
+Hyper:bind({}, '3', function()
   App.launchOrFocusByBundleID('notion.id')
 end)
-Hyper:bind({}, '3', function()
+
+Hyper:bind({}, '4', function()
   App.launchOrFocusByBundleID('com.tinyspeck.slackmacgap')
 end)
