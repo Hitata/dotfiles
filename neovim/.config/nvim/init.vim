@@ -146,6 +146,9 @@ set path+=**
 set splitright
 set splitbelow
 
+" Plugin Setup
+" NERDTree
+" --------------------------------------------------------------
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 0
 let g:NERDTreeIgnore = ['node_modules']
@@ -156,6 +159,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nnoremap <silent> <C-a> :NERDTreeToggle<CR>
 nnoremap <leader> n :NERDTreeFocus<CR>
 
+" Terminal
+" --------------------------------------------------------------
 " turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
 " start terminal in insert mode
@@ -167,11 +172,31 @@ resize 15
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
 
+" Prettier
+" --------------------------------------------------------------
 let g:prettier#autoformat_config_present = 1
 let g:prettier#config#config_precedence = 'prefer-file'
 
 let g:vim_jsx_pretty_highlight_close_tag = 1
 let g:vim_jsx_pretty_colorful_config = 1
+
+
+" GitGutter
+" --------------------------------------------------------------
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '>'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '<'
+
+let g:gitgutter_override_sign_column_highlight = 1
+highlight SignColumn guibg=bg
+highlight SignColumn ctermbg=bg
+
+set updatetime=250
+
+nnoremap <leader>gn :GitGutterNextHunk<CR>
+nnoremap <leader>gp :GitGutterPrevHunk<CR>
 
 "local saga = require 'lspsaga'
 

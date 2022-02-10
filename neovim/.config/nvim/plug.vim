@@ -11,6 +11,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
 
 " Javascript/Typescript helper
 Plug 'pangloss/vim-javascript'
