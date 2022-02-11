@@ -198,6 +198,11 @@ set updatetime=250
 nnoremap <leader>gn :GitGutterNextHunk<CR>
 nnoremap <leader>gp :GitGutterPrevHunk<CR>
 
+" vim-fugitive
+" nnoremap <leader>gb :G blame<CR>
+nnoremap <leader>gb :.GBrowse<CR>
+vnoremap <leader>gb :GBrowse<CR>
+
 "local saga = require 'lspsaga'
 
 "saga.init_lsp_saga {

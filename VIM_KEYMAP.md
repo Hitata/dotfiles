@@ -12,6 +12,16 @@ gc2j  : toggle comment 3 lien below
 :G status : git status
 ,gn   : next git edit hunk
 ,gp   : previous git edit hunk
+,gb   : show line in github browser
+vjj,gb   : select 3 line and show line in github browser
+
+## Navigation
+### motion `:h jump-motions`
+
+### non-motion jump
+<c-o> : move forward that are not motion
+<c-i> : move forward that are not motion
+:ju : jump list
 
 ## Stuff
 jk    : save file

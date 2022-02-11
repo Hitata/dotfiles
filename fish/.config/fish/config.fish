@@ -16,10 +16,17 @@ alias ll "ls -l"
 alias lla "ll -A"
 alias g git
 alias gst "git status"
-alias glo "git log"
+alias glo="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gdc "git diff --cached"
 alias gd "git diff"
 alias gs "git show"
+
+alias vim="nvim"
+alias v="nvim"
+alias vconf="~/Sites/dotfiles/nvim/.config/nvim/init.vim"
+alias dotconf="vim ~/.dotfiles"
+alias bconf="vim ~/Sites/dotfiles/Brewfile"
+alias bmake="make -C ~/Sites/dotfiles brew"
 
 set -gx PATH bin $PATH
 
