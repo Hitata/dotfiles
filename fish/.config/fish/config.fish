@@ -28,7 +28,8 @@ alias dotconf="vim ~/.dotfiles"
 alias bconf="vim ~/Sites/dotfiles/Brewfile"
 alias bmake="make -C ~/Sites/dotfiles brew"
 
-set -gx PATH bin $PATH
+# This append into fish path everytime config is reload
+# set -gx PATH bin $PATH
 
 set -U EDITOR nvim
 
