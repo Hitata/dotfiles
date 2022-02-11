@@ -2,6 +2,9 @@
 
 ### NerdTree
 <C-a> : toggle NerdTree
+,n    : focus back to nerdtree
+ - m  : menu
+ - ma : add new node
 
 ### Comment
 gcc   : comment out a line
@@ -25,6 +28,7 @@ vjj,gb   : select 3 line and show line in github browser
 
 ## Stuff
 jk    : save file
+<s-k> : show help (vim default) and go to definition
 
 ## File moving
 gf    : go to the filename under the cursor
@@ -39,3 +43,5 @@ gf    : go to the filename under the cursor
 ,cv open $MYVIMRC
 ,sv source $MYVIMRC
 
+
+## miscellaneous

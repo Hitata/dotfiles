@@ -23,6 +23,9 @@ set expandtab
 "let loaded_matchparen = 1
 set shell=/bin/zsh " fzf search using fish shell bugs out
 "set backupskip=/tmp/*,/private/tmp/*
+"
+set updatetime=250 " reduce time to highlight
+set redrawtime=10000 " Allow moretime for loading syntax in large files
 
 " incremental substitution (neovim)
 if has('nvim')
@@ -193,10 +196,10 @@ let g:gitgutter_override_sign_column_highlight = 1
 highlight SignColumn guibg=bg
 highlight SignColumn ctermbg=bg
 
-set updatetime=250
-
 nnoremap <leader>gn :GitGutterNextHunk<CR>
 nnoremap <leader>gp :GitGutterPrevHunk<CR>
+nnoremap <leader>ga :GitGutterStageHunk<CR>
+nnoremap <leader>gu :GitGutterUndoHunk<CR>
 
 " vim-fugitive
 " nnoremap <leader>gb :G blame<CR>
