@@ -47,7 +47,7 @@ cask "fig"
 
 # language setup
 brew "yarn", args: ["ignore-dependencies"]
-brew "fnm"
+brew "fnm" # node version manager
 
 cask "vlc"
 cask "figma"
