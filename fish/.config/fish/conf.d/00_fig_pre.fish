@@ -1,1 +1,0 @@
-/Users/hit/.fig/shell/pre.fish

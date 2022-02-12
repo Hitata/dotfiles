@@ -1,1 +1,1 @@
-fnm env --use-oncd | source
+fnm env --use-on-cd | source
