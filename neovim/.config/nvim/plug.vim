@@ -13,6 +13,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'dag/vim-fish'
+
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+
 " Javascript/Typescript helper
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'

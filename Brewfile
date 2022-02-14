@@ -9,7 +9,6 @@ brew "bash"
 brew "coreutils" # cat, ls, rm
 brew "curl"
 brew "git"
-brew "ripgrep"
 brew "stow"
 brew "tmux"
 brew "openssl"
@@ -24,7 +23,10 @@ brew "tree-sitter"
 brew "reattach-to-user-namespace" # for tmux copy?
 brew "exa" # improved ls with color
 brew "fasd" #
+
+brew "ripgrep"
 brew "fzf"
+
 brew "fd" # better find
 brew "jq" # jq json processor
 brew "mas" # mac app store command line
