@@ -13,6 +13,8 @@ gc2j  : toggle comment 3 lien below
 
 ### Git
 :G status : git status
+,ga   : add current hunk to git stage
+,gu   : undo current hunk
 ,gn   : next git edit hunk
 ,gp   : previous git edit hunk
 ,gb   : show line in github browser

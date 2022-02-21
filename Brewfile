@@ -39,7 +39,6 @@ brew "direnv"
 cask "ngrok"
 
 cask "kitty"
-cask "rectangle"
 cask "visual-studio-code"
 cask "bartender" # Control your mac menu bar
 cask "font-hack-nerd-font" # Add nerd font
@@ -64,6 +63,7 @@ cask "notion"
 # cask "1password"
 # cask "1password-cli"
 # cask "firefox"
+cask "firefox-developer-edition"
 
 # Keybinding
 cask "hammerspoon"

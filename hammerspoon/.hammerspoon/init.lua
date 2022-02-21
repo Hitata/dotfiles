@@ -2,6 +2,7 @@
 require('preferences')
 
 hs.loadSpoon('Hyper')
+hs.loadSpoon('WindowMove')
 
 App   = hs.application
 Hyper = spoon.Hyper
@@ -47,3 +48,30 @@ end)
 Hyper:bind({}, '4', function()
   App.launchOrFocusByBundleID('com.tinyspeck.slackmacgap')
 end)
+
+MoveWindows = spoon.WindowMove
+hs.window.highlight.ui.overlay = true
+MoveWindows
+  :start()
+  :bind('', ',', function()
+    hs.window.focusedWindow()
+      :application()
+      :selectMenuItem("Tile Window to Left of Screen")
+    MoveWindows:exit()
+  end)
+  :bind('', '.', function()
+    hs.window.focusedWindow()
+      :application()
+      :selectMenuItem("Tile Window to Right of Screen")
+    MoveWindows:exit()
+  end)
+  :bind('', 'v', function()
+    MoveWindows:split()
+    MoveWindows:exit()
+  end)
+  :bind('', 'tab', function ()
+    hs.window.focusedWindow():centerOnScreen()
+    MoveWindows:exit()
+  end)
+
+Hyper:bind({}, 'm', function() MoveWindows:toggle() end)
