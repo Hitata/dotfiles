@@ -75,3 +75,4 @@ MoveWindows
   end)
 
 Hyper:bind({}, 'm', function() MoveWindows:toggle() end)
+
