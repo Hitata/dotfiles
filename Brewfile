@@ -59,11 +59,15 @@ cask "google-drive"
 cask "fantastical"
 cask "notion"
 
+cask "darktable"
+# cask "digikam" # todo: manage photo
+cask "handbrake"
+
 # Should install
 # cask "1password"
 # cask "1password-cli"
 # cask "firefox"
-cask "firefox-developer-edition"
+# cask "firefox-developer-edition"
 
 # Keybinding
 cask "hammerspoon"
