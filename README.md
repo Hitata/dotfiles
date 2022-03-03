@@ -32,6 +32,15 @@ fish_add_path -U /opt/homebrew/bin
 ```
 [fish_add_path docs](https://fishshell.com/docs/current/cmds/fish_add_path.html)
 
+## Run Macos preference setup
+```fish
+./init_macos.sh
+
+```
+### This includes
+- [x] Finder app config preference
+- [ ] Dock config preference 
+
 # TODO
 - [ ] Use stow to symlink all this to .config
 - [ ] add karabiner-element json config
