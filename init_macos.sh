@@ -1,9 +1,10 @@
 #!/usr/bin/env fish
 
-function bot
-  set_color green; echo -n "\[._.]/ - "
-  set_color normal; echo $argv[1]
-end
+# FYI: bot, running, ok are fish function
+source ./macos/echo.fish
 
 bot "Setting up prefered finder config"
-source macos/finder_config.sh
+# source ./macos/finder_config.sh
+
+bot "Setting up prefered dock config"
+source ./macos/dock_config.sh

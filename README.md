@@ -39,8 +39,14 @@ fish_add_path -U /opt/homebrew/bin
 ```
 ### This includes
 - [x] Finder app config preference
-- [ ] Dock config preference 
+- [x] Dock config preference 
+- [ ] Hot corners?
+- [ ] Safari & Webkit:q
 
 # TODO
 - [ ] Use stow to symlink all this to .config
 - [ ] add karabiner-element json config
+
+# Reference
+## Fish cookbook
+https://github.com/jorgebucaran/cookbook.fish

@@ -34,6 +34,7 @@ jk    : save file
 
 ## File moving
 gf    : go to the filename under the cursor
+<C-w>f: open filename under the cursor in split view
 <C-^> : previous file
 <C-f> : fzf on all file
 <C-p> : fzf on git file

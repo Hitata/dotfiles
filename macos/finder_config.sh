@@ -1,13 +1,6 @@
 #!/usr/bin/env fish
 
-function ok
-  set_color green; echo [ok]
-end
-
-function running -a text
-  set_color yellow; echo -n "[action] "
-  set_color normal; echo -n "$text... "
-end
+# FYI: bot, running, ok are fish function
 
 # Set search scope.
 # This Mac       : `SCev`
