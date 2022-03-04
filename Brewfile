@@ -75,6 +75,7 @@ cask "karabiner-elements"
 
 # Stuff
 cask "brave-browser"
+cask "qbittorrent"
 
 # Games
 cask "steam"
