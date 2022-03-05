@@ -20,7 +20,6 @@ brew "neovim"
 brew "tree-sitter"
 # brew "luajit", args: ["HEAD"] # no bottle for Apple Silicon
 
-brew "reattach-to-user-namespace" # for tmux copy?
 brew "exa" # improved ls with color
 brew "fasd" #
 
