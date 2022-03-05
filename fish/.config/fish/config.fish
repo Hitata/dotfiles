@@ -31,6 +31,7 @@ alias glo "git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset 
 alias gd "git diff"
 alias gdc "git diff --cached"
 alias gs "git show"
+alias gc "git commit"
 
 # file
 alias vim "nvim"
