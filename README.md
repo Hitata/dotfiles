@@ -9,8 +9,10 @@ softwareupdate --install-rosetta
 [apple support reference](https://support.apple.com/en-us/HT211861)
 
 # Install IDE: neovim
-## install vim-plug
-- run `nvim +PlugInstall +qall`
+## install vim-plug & plugins
+```bash
+./init_vim.sh
+```
 
 ## install typescript & tsserver
 - run `yarn global add typescript typescript-language-server`
