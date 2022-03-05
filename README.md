@@ -39,7 +39,7 @@ fish_add_path -U /opt/homebrew/bin
 ```
 ### This includes
 - [x] Finder app config preference
-- [x] Dock config preference 
+- [x] Dock config preference
 - [ ] Hot corners?
 - [ ] Safari & Webkit:q
 
@@ -50,3 +50,35 @@ fish_add_path -U /opt/homebrew/bin
 # Reference
 ## Fish cookbook
 https://github.com/jorgebucaran/cookbook.fish
+
+# Git commit convention
+## types
+- [x] fixs: patch
+- [x] feat: minor
+- [x] docs: documents
+- [x] refa: refactor
+- [x] perf: performance improvement
+- [x] test: write tests
+- [x] cicd: CI/CD stuff
+- [x] buil:
+- [x] chor:
+- [x] styl:
+
+## scope
+- [x] brew
+- [x] nvim
+- [x] fish
+- [x] tmux
+- [x] kitty
+- [x] hammerspoon
+
+## description format
+- must be in imperative mood, which is a demand
+- Can fit into this sentense: If applied this commmit will `your subject line here`
+- atomic commits approach: commit each fix/task as separate change
+```
+Ex:
+1. feat(brew): install brave for browsing web without ads
+2. fix(hammerspoon): update WindowMove spoon to hyper+m
+3. docs(nvim): update git blame keybind to ,gco
+```
