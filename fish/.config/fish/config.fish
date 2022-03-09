@@ -14,10 +14,6 @@ set -g theme_hostname always
 
 set -U EDITOR nvim
 
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
 # navigation
 alias ls "ls -p -G"
 alias la "ls -A"
@@ -37,11 +33,17 @@ alias gc "git commit"
 alias vim "nvim"
 alias v "nvim"
 
-set -gx DOTFILE_DIR ~/Sites/dotfiles
+set -gx SITE_DIR $HOME/Sites
+set -gx DOTFILE_DIR $SITE_DIR/dotfiles
 
 alias fc "v $DOTFILE_DIR/fish/.config/fish/config.fish"
 alias vc "v $DOTFILE_DIR/neovim/.config/nvim/init.vim"
 alias tc "v $DOTFILE_DIR/tmux/.config/tmux/tmux.conf"
 alias bc "v $DOTFILE_DIR/Brewfile"
 alias bmake "make -C $DOTFILE_DIR brew"
+
+if status is-interactive
+  cd $SITE_DIR
+  # Commands to run in interactive sessions can go here
+end
 
