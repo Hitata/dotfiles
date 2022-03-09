@@ -43,7 +43,7 @@ alias bc "v $DOTFILE_DIR/Brewfile"
 alias bmake "make -C $DOTFILE_DIR brew"
 
 if status is-interactive
-  cd $SITE_DIR
+  # cd $SITE_DIR # conflicts with 'tmux new -c' session
   # Commands to run in interactive sessions can go here
 end
 
