@@ -9,6 +9,9 @@ set -g theme_display_user yes
 set -g theme_hide_hostname no
 set -g theme_hostname always
 
+set fish_key_bindings fish_user_key_bindings
+set fish_bind_mode insert
+
 # This append into fish path everytime config is reload
 # set -gx PATH bin $PATH
 
