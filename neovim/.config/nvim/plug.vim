@@ -38,9 +38,9 @@ if has("nvim")
   Plug 'nvim-telescope/telescope.nvim'
 endif
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mhartington/oceanic-next'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'rebelot/kanagawa.nvim'
 
 call plug#end()
 
