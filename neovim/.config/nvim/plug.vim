@@ -31,6 +31,7 @@ if has("nvim")
   Plug 'glepnir/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+  Plug 'nvim-lualine/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
 
   Plug 'nvim-lua/popup.nvim'
