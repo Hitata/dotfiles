@@ -28,9 +28,11 @@ Plug 'maxmellon/vim-jsx-pretty'
 if has("nvim")
   " LSP Plugins
   Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/nvim-lsp-installer'
   Plug 'glepnir/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+  Plug 'SmiteshP/nvim-gps'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
 

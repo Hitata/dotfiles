@@ -1,15 +1,7 @@
-if !exists('g:lspconfig')
-  finish
-endif
-
-lua << EOF
---vim.lsp.set_log_level("debug")
-EOF
-
-" LSP
-lua << EOF
-local nvim_lsp = require('lspconfig')
-local protocol = require'vim.lsp.protocol'
+local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+if not status_ok then
+  return
+end
 
 -- Use an on_attach function to only map the following keys 
 -- after the language server attaches to the current buffer
@@ -50,70 +42,60 @@ local on_attach = function(client, bufnr)
   end
 end
 
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+local servers = {
+	-- "bashls",
+	-- "pyright",
+	"tsserver",
+	-- "emmet_ls",
+	"sumneko_lua",
+	-- "ltex",
+  "volar",
+  "tailwindcss",
+	"eslint",
 }
-EOF
 
-" nvim_lsp.diagnosticls.setup {
-"   on_attach = on_attach,
-"   filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },
-"   init_options = {
-"     linters = {
-"       eslint = {
-"         command = 'eslint_d',
-"         rootPatterns = { '.git' },
-"         debounce = 100,
-"         args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
-"         sourceName = 'eslint_d',
-"         parseJson = {
-"           errorsRoot = '[0].messages',
-"           line = 'line',
-"           column = 'column',
-"           endLine = 'endLine',
-"           endColumn = 'endColumn',
-"           message = '[eslint] ${message} [${ruleId}]',
-"           security = 'severity'
-"         },
-"         securities = {
-"           [2] = 'error',
-"           [1] = 'warning'
-"         }
-"       },
-"     },
-"     filetypes = {
-"       javascript = 'eslint',
-"       javascriptreact = 'eslint',
-"       typescript = 'eslint',
-"       typescriptreact = 'eslint',
-"     },
-"     formatters = {
-"       eslint_d = {
-"         command = 'eslint_d',
-"         rootPatterns = { '.git' },
-"         args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
-"         rootPatterns = { '.git' },
-"       },
-"       prettier = {
-"         command = 'prettier_d_slim',
-"         rootPatterns = { '.git' },
-"         -- requiredFiles: { 'prettier.config.js' },
-"         args = { '--stdin', '--stdin-filepath', '%filename' }
-"       }
-"     },
-"     formatFiletypes = {
-"       css = 'prettier',
-"       javascript = 'prettier',
-"       javascriptreact = 'prettier',
-"       json = 'prettier',
-"       scss = 'prettier',
-"       less = 'prettier',
-"       typescript = 'prettier',
-"       typescriptreact = 'prettier',
-"       json = 'prettier',
-"       markdown = 'prettier',
-"     }
-"   }
-" }
+-- Automatically install LSP on load neovim 
+for _, name in pairs(servers) do
+	local server_is_found, server = lsp_installer.get_server(name)
+	if server_is_found then
+		if not server:is_installed() then
+			print("Installing " .. name)
+			server:install()
+		end
+	end
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+--
+local volar_opts = {
+  cmd = { "vue-language-server", "--stdio" },
+  -- root_dir = path.concat { vim.fn.stdpath "data", "lsp_servers" },
+  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+}
+
+
+lsp_installer.on_server_ready(function(server)
+	-- Specify the default options which we'll use to setup all servers
+	local opts = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	}
+
+  if server.name == "volar" then
+    opts = vim.tbl_deep_extend("force", volar_opts, opts)
+  end
+
+	server:setup(opts)
+end)
+
+lsp_installer.settings({
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
+    }
+  }
+})
 

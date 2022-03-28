@@ -14,6 +14,7 @@ brew "tmux"
 brew "openssl"
 brew "fish"
 brew "fisher"
+brew "wget"
 
 # Nvim related
 brew "neovim"
