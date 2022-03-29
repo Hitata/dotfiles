@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
--- Use an on_attach function to only map the following keys 
+-- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -54,7 +54,7 @@ local servers = {
 	"eslint",
 }
 
--- Automatically install LSP on load neovim 
+-- Automatically install LSP on load neovim
 for _, name in pairs(servers) do
 	local server_is_found, server = lsp_installer.get_server(name)
 	if server_is_found then
@@ -65,13 +65,24 @@ for _, name in pairs(servers) do
 	end
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
---
+local capabilities = require("cmp_nvim_lsp").update_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
+
 local volar_opts = {
   cmd = { "vue-language-server", "--stdio" },
   -- root_dir = path.concat { vim.fn.stdpath "data", "lsp_servers" },
   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+}
+
+local sumneko_lua_opts = {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
 }
 
 
@@ -84,6 +95,9 @@ lsp_installer.on_server_ready(function(server)
 
   if server.name == "volar" then
     opts = vim.tbl_deep_extend("force", volar_opts, opts)
+  end
+  if server.name == "sumneko_lua" then
+    opts = vim.tbl_deep_extend("force", sumneko_lua_opts, opts)
   end
 
 	server:setup(opts)
@@ -99,3 +113,21 @@ lsp_installer.settings({
   }
 })
 
+
+vim.opt.completeopt = "menu,menuone,noselect"
+
+local cmp = require"cmp"
+cmp.setup({
+  mapping = {
+    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.close(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+  }, {
+    { name = "buffer" },
+  })
+})
