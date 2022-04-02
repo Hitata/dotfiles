@@ -71,7 +71,6 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(
 
 local volar_opts = {
   cmd = { "vue-language-server", "--stdio" },
-  -- root_dir = path.concat { vim.fn.stdpath "data", "lsp_servers" },
   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
 }
 
@@ -84,7 +83,6 @@ local sumneko_lua_opts = {
     }
   }
 }
-
 
 lsp_installer.on_server_ready(function(server)
 	-- Specify the default options which we'll use to setup all servers

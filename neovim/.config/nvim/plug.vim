@@ -32,8 +32,12 @@ if has("nvim")
   Plug 'glepnir/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+  " LSP Autocomplete
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
+
+  " LSP formating, diagnostics
+  Plug 'jose-elias-alvarez/null-ls.nvim'
 
   Plug 'SmiteshP/nvim-gps'
   Plug 'nvim-lualine/lualine.nvim'
