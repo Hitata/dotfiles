@@ -21,7 +21,7 @@ hammerspoon:
 hyper:
 	stow -vSt ~ hyper
 brew:
-	brew bundle
+	stow -vSt ~ brew
 
 plug: | $(NVIM)
 	curl -fLo $(VPLUG) --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

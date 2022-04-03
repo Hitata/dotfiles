@@ -10,11 +10,13 @@ nvim Brewfile
 ```
 bmake # this is a fish alias
 # or
-brew bundle
+brew bundle --global
 ```
 *Uninstall application base on comment out in brewfile
 ```
-brew bundle cleanup
+brew bundle cleanup --global
+# or to run uninstall
+brew bundle cleanup --global --force
 ```
 *Search for installed fonts*
 ```

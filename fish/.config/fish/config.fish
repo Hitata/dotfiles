@@ -43,7 +43,8 @@ alias fc "v $DOTFILE_DIR/fish/.config/fish/config.fish"
 alias vc "v $DOTFILE_DIR/neovim/.config/nvim/init.vim"
 alias tc "v $DOTFILE_DIR/tmux/.config/tmux/tmux.conf"
 alias bc "v $DOTFILE_DIR/Brewfile"
-alias bmake "make -C $DOTFILE_DIR brew"
+alias brew_install "brew bundle --global"
+alias brew_cleanup "brew bundle cleanup --global"
 
 if status is-interactive
   # cd $SITE_DIR # conflicts with 'tmux new -c' session
