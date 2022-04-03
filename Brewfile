@@ -78,7 +78,7 @@ cask "brave-browser"
 cask "qbittorrent"
 
 # Games
-cask "steam"
+# cask "steam" # new age, no more dota 2 for now
 
 # Should see if really needed?
 # brew "autoconf"
