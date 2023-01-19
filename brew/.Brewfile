@@ -31,9 +31,14 @@ brew "fd" # better find
 brew "jq" # jq json processor
 brew "mas" # mac app store command line
 
-# CLIs
+# CLIs, Dev tools
+brew "libpq" # postgre cli
+brew "pgcli"
 brew "gh" # github cli
+cask "github"
 brew "awscli"
+cask "docker"
+brew "golang-migrate"
 
 brew "direnv"
 cask "ngrok"
@@ -50,7 +55,6 @@ brew "yarn", args: ["ignore-dependencies"]
 brew "fnm" # node version manager
 
 cask "vlc"
-cask "figma"
 cask "slack"
 cask "discord"
 cask "zoom"
@@ -58,14 +62,20 @@ cask "google-chrome"
 cask "google-drive"
 cask "fantastical"
 cask "notion"
+cask "obsidian"
 
+cask "kap"
+
+# Design Tool
+cask "inkscape"
+cask "figma"
 cask "darktable"
 # cask "digikam" # todo: manage photo
 cask "handbrake"
 
 # Should install
-# cask "1password"
-# cask "1password-cli"
+cask "1password"
+cask "1password-cli"
 # cask "firefox"
 # cask "firefox-developer-edition"
 
@@ -78,7 +88,10 @@ cask "brave-browser"
 cask "qbittorrent"
 
 # Games
-# cask "steam" # new age, no more dota 2 for now
+cask "steam" # new age, no more dota 2 for now
+
+cask "adobe-acrobat-reader"
+cask "android-studio"
 
 # Should see if really needed?
 # brew "autoconf"
