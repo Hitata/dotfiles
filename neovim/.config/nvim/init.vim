@@ -157,7 +157,7 @@ let NERDTreeStatusLine='NERDTree'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Toggle
 nnoremap <silent> <C-t> :NERDTreeToggle<CR>
-nnoremap <leader> n :NERDTreeFocus<CR>
+nnoremap <leader> n :NERDTreeFind<CR>
 
 " Terminal
 " --------------------------------------------------------------
