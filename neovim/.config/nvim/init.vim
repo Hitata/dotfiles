@@ -127,8 +127,9 @@ if exists("&termguicolors") && exists("&winblend")
   set winblend=0
   set wildoptions=pum
   set pumblend=5
-  set background=dark
-  colorscheme kanagawa
+  " set background=dark
+  " colorscheme kanagawa
+  colorscheme onehalflight
 endif
 
 set relativenumber
@@ -137,6 +138,7 @@ set fileencodings=utf-8,jis,euc-jp,latin
 set encoding=utf-8
 " let g:airline_powerline_fonts = 1
 " let g:airline_theme='oceanicnext'
+let g:airline_theme='onehalfdark'
 
 set hidden
 set path+=**
@@ -157,7 +159,7 @@ let NERDTreeStatusLine='NERDTree'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Toggle
 nnoremap <silent> <C-t> :NERDTreeToggle<CR>
-nnoremap <leader> n :NERDTreeFind<CR>
+nnoremap <leader>n :NERDTreeFind<CR>
 
 " Terminal
 " --------------------------------------------------------------
