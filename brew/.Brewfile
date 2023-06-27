@@ -45,10 +45,7 @@ cask "ngrok"
 
 cask "kitty"
 cask "visual-studio-code"
-cask "bartender" # Control your mac menu bar
 cask "font-hack-nerd-font" # Add nerd font
-
-cask "hyper"
 
 # language setup
 brew "yarn", args: ["ignore-dependencies"]
@@ -60,9 +57,10 @@ cask "discord"
 cask "zoom"
 cask "google-chrome"
 cask "google-drive"
-cask "fantastical"
 cask "notion"
 cask "obsidian"
+
+cask "messenger"
 
 cask "kap"
 
@@ -92,6 +90,13 @@ cask "steam" # new age, no more dota 2 for now
 
 cask "adobe-acrobat-reader"
 cask "android-studio"
+
+cask "canva"
+
+# TODO: check see if homebrew host this
+# a vimlike navigation for mac
+# cask homerow
+cask "anki"
 
 # Should see if really needed?
 # brew "autoconf"
