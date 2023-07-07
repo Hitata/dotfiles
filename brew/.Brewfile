@@ -98,6 +98,8 @@ cask "canva"
 # cask homerow
 cask "anki"
 
+# cask "raycast"
+
 # Should see if really needed?
 # brew "autoconf"
 # brew "fish"
