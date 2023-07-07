@@ -47,11 +47,16 @@ m.grid = {
   { key='h', unit=hs.geometry.rect(0,0,0.6,1) },
   { key='l', unit=hs.geometry.rect(0.6,0,0.4,1) },
 
-  { key='y', unit=hs.geometry.rect(0, 0, 0.5, 0.5) },
-  { key='u', unit=hs.geometry.rect(0.5, 0, 0.5, 0.5) },
-  { key='b', unit=hs.geometry.rect(0, 0.5, 0.5, 0.5) },
-  { key='n', unit=hs.geometry.rect(0.5, 0.5, 0.5, 0.5) },
+  -- { key='y', unit=hs.geometry.rect(0, 0, 0.5, 0.5) },
+  -- { key='u', unit=hs.geometry.rect(0.5, 0, 0.5, 0.5) },
+  -- { key='b', unit=hs.geometry.rect(0, 0.5, 0.5, 0.5) },
+  -- { key='n', unit=hs.geometry.rect(0.5, 0.5, 0.5, 0.5) },
 
+  { key='y', unit='0,0 1x3' },
+  { key='u', unit='1,1 1x3' },
+  { key='b', unit='2,1 1x3' },
+
+  { key='t', unit=hs.geometry.rect(0, 0, 0.25, 0.9) },
 
   { key='space', unit=hs.layout.maximized },
 }
@@ -109,7 +114,8 @@ function m:start()
     end)
     m:bind('', entry.key, function()
       local focused = hs.window.focusedWindow()
-      focused:move(entry.unit)
+      -- focused:move(entry.unit)
+      hs.grid.set(focused, entry.unit)
       -- hs.layout.apply({
       --   {nil, focused, focused:screen(), entry.unit, 0, 0},
       -- })
@@ -121,7 +127,14 @@ function m:start()
   m
   :bind('ctrl', '[', function() m:exit() end)
   :bind('', 'escape', function() m:exit() end)
-
+  :bind('', 'h', function()
+    hs.grid.set(hs.window.focusedWindow(), '1,1 1x2')
+    m:exit()
+  end)
+  :bind('', 'g', function()
+    hs.grid.set(hs.window.focusedWindow(), '2,0 1x3')
+    m:exit()
+  end)
   return self
 end
 
