@@ -14,7 +14,7 @@ local packer_bootstrap = ensure_packer() -- true if packer was just installed
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
   augroup end
 ]])
 
@@ -30,6 +30,10 @@ return packer.startup(function(use)
   use 'nvim-lua/plenary.nvim' -- lua functions that many plugins use
 
   use 'nvim-lualine/lualine.nvim' -- Statusline
+
+  use 'rebelot/kanagawa.nvim'
+
+  use 'nvim-tree/nvim-tree.lua'
 
   use 'nvim-telescope/telescope.nvim' -- Fuzzy finder
 end)

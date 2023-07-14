@@ -2,6 +2,7 @@
 -- vim.cmd.source(vimrc)
 
 vim.cmd("autocmd!")
+vim.cmd("colorscheme kanagawa")
 
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
@@ -45,4 +46,5 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { 'r' }
 
-require("plugins")
+require("plugins-setup")
+require("plugins.nvim-tree")
