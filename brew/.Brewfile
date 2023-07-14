@@ -99,6 +99,9 @@ cask "canva"
 cask "anki"
 
 # cask "raycast"
+#
+# Window boot
+brew "wimlib"
 
 # Should see if really needed?
 # brew "autoconf"
