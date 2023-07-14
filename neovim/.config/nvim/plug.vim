@@ -26,23 +26,6 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'peitalin/vim-jsx-typescript'
 
 if has("nvim")
-  " LSP Plugins
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'williamboman/nvim-lsp-installer'
-  Plug 'tami5/lspsaga.nvim'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-  " LSP Autocomplete
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-vsnip'
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/vim-vsnip'
-
-  " LSP formating, diagnostics
-  Plug 'jose-elias-alvarez/null-ls.nvim'
-
-  Plug 'SmiteshP/nvim-gps'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
 

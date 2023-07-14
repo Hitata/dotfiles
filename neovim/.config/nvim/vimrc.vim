@@ -107,7 +107,7 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 " Imports "{{{
 " ---------------------------------------------------------------------
-runtime ./plug.vim
+" runtime ./plug.vim
 if has("unix")
   let s:uname = system("uname -s")
   " Do Mac stuff
