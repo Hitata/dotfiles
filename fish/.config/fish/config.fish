@@ -38,10 +38,13 @@ alias v "nvim"
 
 set -gx SITE_DIR $HOME/Sites
 set -gx DOTFILE_DIR $SITE_DIR/dotfiles
+set -gx NEOVIM_DIR $DOTFILE_DIR/neovim/.config/nvim
+set -gx TMUX_DIR $DOTFILE_DIR/tmux/.config/tmux
+set -gx VIMRC $NEOVIM_DIR/init.lua
 
 alias fc "v $DOTFILE_DIR/fish/.config/fish/config.fish"
-alias vc "v $DOTFILE_DIR/neovim/.config/nvim/init.vim"
-alias tc "v $DOTFILE_DIR/tmux/.config/tmux/tmux.conf"
+alias vc "v -O $NEOVIM_DIR/init.lua $NEOVIM_DIR/keymaps.lua $NEOVIM_DIR/lua/plugins-setup.lua"
+alias tc "v $TMUX_DIR/tmux.conf"
 alias bc "v $DOTFILE_DIR/brew/.Brewfile"
 alias brew_install "brew bundle --global"
 alias brew_cleanup "brew bundle cleanup --global"
