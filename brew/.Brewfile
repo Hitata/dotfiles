@@ -25,9 +25,10 @@ brew "exa" # improved ls with color
 brew "fasd" #
 
 brew "ripgrep"
-brew "fzf"
+brew "fzf" # fuzzy search
+brew "bat" # smarter cat, syntax
+brew "fd" # faster colorized find
 
-brew "fd" # better find
 brew "jq" # jq json processor
 brew "mas" # mac app store command line
 
