@@ -29,11 +29,14 @@ return packer.startup(function(use)
 
   use 'nvim-lua/plenary.nvim' -- lua functions that many plugins use
 
+  use 'bluz71/vim-nightfly-guicolors' -- preferred colorscheme
+  -- use 'rebelot/kanagawa.nvim'
+
+  use 'tpope/vim-surround'
+
   use 'nvim-lualine/lualine.nvim' -- Statusline
 
   use 'numToStr/Comment.nvim'
-
-  use 'rebelot/kanagawa.nvim'
 
   use 'nvim-tree/nvim-tree.lua'
 

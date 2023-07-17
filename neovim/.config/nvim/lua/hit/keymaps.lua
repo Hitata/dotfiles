@@ -1,8 +1,12 @@
-vim.g.mapleader = ","
-
 local keymap = vim.keymap
 
 keymap.set("n", "<leader>sv", ":luafile $VIMRC<CR>")
+
+keymap.set("i", "jk", "<ESC>")
+keymap.set("n", "<leader>nh", ":nohl<CR>")
+
+keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+
 
 keymap.set("n", "<C-p>", "<cmd>Telescope find_files<cr>")
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type

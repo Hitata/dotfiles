@@ -2,7 +2,8 @@
 -- vim.cmd.source(vimrc)
 
 vim.cmd("autocmd!")
-vim.cmd("colorscheme kanagawa")
+
+vim.g.mapleader = ","
 
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
@@ -46,8 +47,14 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { 'r' }
 
+local status, _ = pcall(vim.cmd, "colorscheme nightfly")
+if not status then
+  print("Colorscheme not found!") -- print error if colorscheme not installed
+  return
+end
 
-require("plugins-setup")
-require("plugins.nvim-tree")
-require("plugins.comment")
-require("keymaps")
+
+require("hit.plugins-setup")
+require("hit.plugins.nvim-tree")
+require("hit.plugins.comment")
+require("hit.keymaps")
