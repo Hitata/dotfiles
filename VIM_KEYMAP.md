@@ -1,13 +1,18 @@
 ## List of Vim Keybinds
 
-### NerdTree
-<C-a> : toggle NerdTree
+### Nvim-Tree
 ,n    : focus back to nerdtree
- - m  : menu
- - ma : add new node
+g?    : help
+<C+k> : show info
+m     : bookmark?
+a     : add new node
+r     : rename new node
+d     : delete
+R : refresh
 
 ### Comment
 gcc   : comment out a line
+gbc   : comment out a block 
 gcj   : toggle comment 2 line below
 gc2j  : toggle comment 3 lien below
 
