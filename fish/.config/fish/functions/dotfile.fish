@@ -5,11 +5,17 @@ function dotfile
     tmux attach -dt $session
   else
     tmux new -s $session -n dotfile_dir -c $DOTFILE_DIR -d
+    # neovim
     tmux new-window -n nvim
     tmux send-key -t nvim "cd $NEOVIM_DIR" Enter
     tmux send-key -t nvim vc Enter
 
-    # neww -n fish_config fc \; \
+    # fish 
+    tmux new-window -n fish
+    tmux send-key -t fish "cd $FISH_DIR" Enter
+    tmux send-key -t fish fc Enter
+
+    # tmux
     tmux new-window -n tmux
     tmux send-key -t tmux "cd $TMUX_DIR" Enter
     tmux send-key -t tmux tc Enter
