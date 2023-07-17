@@ -11,9 +11,9 @@ function dotfile
     tmux send-key -t nvim vc Enter
 
     # fish 
-    tmux new-window -n fish
-    tmux send-key -t fish "cd $FISH_DIR" Enter
-    tmux send-key -t fish fc Enter
+    tmux new-window -n fish_conf
+    tmux send-key -t fish_conf "cd $FISH_DIR" Enter
+    tmux send-key -t fish_conf fc Enter
 
     # tmux
     tmux new-window -n tmux
