@@ -49,4 +49,5 @@ vim.opt.formatoptions:append { 'r' }
 
 require("plugins-setup")
 require("plugins.nvim-tree")
--- require("keymaps")
+require("plugins.comment")
+require("keymaps")

@@ -31,6 +31,8 @@ return packer.startup(function(use)
 
   use 'nvim-lualine/lualine.nvim' -- Statusline
 
+  use 'numToStr/Comment.nvim'
+
   use 'rebelot/kanagawa.nvim'
 
   use 'nvim-tree/nvim-tree.lua'
