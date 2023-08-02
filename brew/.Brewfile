@@ -50,6 +50,7 @@ cask "font-hack-nerd-font" # Add nerd font
 
 # language setup
 brew "yarn", args: ["ignore-dependencies"]
+brew "pnpm"
 brew "fnm" # node version manager
 
 cask "vlc"
@@ -94,23 +95,18 @@ cask "android-studio"
 
 cask "canva"
 
-# TODO: check see if homebrew host this
-# a vimlike navigation for mac
-# cask homerow
+cask "shortcat"
+cask "raycast"
 cask "anki"
-
-# cask "raycast"
 #
 # Window boot
 brew "wimlib"
 
 # Should see if really needed?
 # brew "autoconf"
-# brew "fish"
 # brew "gawk"
 # brew "gnupg"
 
-# cask "alfred"
 # cask "dash"
 # cask "grid-clock"
 # cask "font-ia-writer-quattro"
