@@ -22,10 +22,11 @@ hyper:
 	stow -vSt ~ hyper
 brew:
 	stow -vSt ~ brew
+kitty:
+	stow -vSt ~ kitty
 
 plug: | $(NVIM)
 	curl -fLo $(VPLUG) --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	chmod +x $(VPLUG)
 	sh -c $(VPLUG)
 	$(NVIM) +PlugInstall +qall
-
