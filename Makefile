@@ -18,8 +18,6 @@ karabiner:
 	stow -vSt ~ karabiner
 hammerspoon:
 	stow -vSt ~ hammerspoon 
-hyper:
-	stow -vSt ~ hyper
 brew:
 	stow -vSt ~ brew
 kitty:
