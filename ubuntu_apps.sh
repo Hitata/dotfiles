@@ -1,9 +1,21 @@
-
-## install essential
 sudo apt update
-sudo apt install curl -y
+
+## 1. setup dotfile
+ssh-keygen -t ed25519 -C "email..."
+cat ~/.ssh/id.pub
+### go to github keys add sshkey
+https://github.com/settings/keys
+
 sudo apt install git
-# ssh-keygen -t ed25519 -C "email..."
+git clone git@github.com:Hitata/dotfiles.git
+
+## 2. fix keyboard default
+sudo vi /etc/default/keyboard
+add
+```
+XKBOPTIONS="ctrl:nocaps"
+```
+sudo dpkg-reconfigure keyboard-configuration
 
 ## dotfile config
 sudo apt install stow
@@ -12,6 +24,7 @@ sudo apt install stow
 sudo snap install --classic code
 
 ## install node and pnpm
+sudo apt install curl -y
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 curl -fsSL https://get.pnpm.io/install.sh | sh -
