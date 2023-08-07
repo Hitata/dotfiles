@@ -1,12 +1,44 @@
 # Setup
-- Run install brew
+- Go to https://brew.sh
+- Follow instruction and install brew
+## Run brew
+```
+brew bundle --file=~/dotfiles/brew/.Brewfile
+```
+Check out [Brew Manual](/BrewManual.md)
 
 # Install Rosetta needed in Mac with Apple silicon
 In order to run "universal" app which is usual for Intel processor, we need to manual update with Rosetta
+mainly to run steam
 ```bash
 softwareupdate --install-rosetta
 ```
 [apple support reference](https://support.apple.com/en-us/HT211861)
+
+# go to dotfile directory and symlink using stow
+```
+stow brew
+stow karabiner
+stow kitty
+```
+
+## karabiner & keybinding
+mainly to switch ctrl to caplock
+
+# raycast
+a spotlight replacer
+## Todo
+- Keyboard Shortcut > Spotlight > Off Show Spotlight search
+- Change Raycast hotkey to `CMD + space`
+## Usage
+- window manager
+
+
+# Setting up for work
+## Google Chrome
+- sign in to google account
+- install Yomichan all 4 dictionaries (kanjidic, kireicake, jmnedict, jmdict)
+## Slack
 
 # Install IDE: neovim
 ## install vim-plug & plugins
@@ -17,25 +49,8 @@ softwareupdate --install-rosetta
 ## install typescript & tsserver
 - run `yarn global add typescript typescript-language-server`
 
-## Setup fish prompt
-- Add fish to know shells
-```bash
-which fish
-sudo su - c 'echo /opt/homebrew/bin/fish >> /etc/shells'
-```
-- Restart your terminal (kitty)
-- set fish as default shell
-```
-chsh -s /opt/homebrew/bin/fish
-```
-- Add brew binaries in fish path
-```
-fish_add_path -U /opt/homebrew/bin
-```
-[fish_add_path docs](https://fishshell.com/docs/current/cmds/fish_add_path.html)
-
 ## Run Macos preference setup
-```fish
+```
 ./init_macos.sh
 
 ```
@@ -47,11 +62,9 @@ fish_add_path -U /opt/homebrew/bin
 
 # TODO
 - [ ] Use stow to symlink all this to .config
-- [ ] add karabiner-element json config
+ - [ ] brew install stow, stow symlink brew global :think:
 
 # Reference
-## Fish cookbook
-https://github.com/jorgebucaran/cookbook.fish
 
 # Git commit convention
 ## types

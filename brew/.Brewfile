@@ -5,71 +5,74 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 
-brew "bash"
-brew "coreutils" # cat, ls, rm
+# brew "coreutils" # cat, ls, rm
 brew "curl"
 brew "git"
 brew "stow"
 brew "tmux"
 brew "openssl"
-brew "fish"
-brew "fisher"
 brew "wget"
 
-# Nvim related
-brew "neovim"
-brew "tree-sitter"
-# brew "luajit", args: ["HEAD"] # no bottle for Apple Silicon
+# Keybinding
+cask "hammerspoon"
+cask "karabiner-elements"
 
-brew "exa" # improved ls with color
-brew "fasd" #
-
-brew "ripgrep"
-brew "fzf" # fuzzy search
-brew "bat" # smarter cat, syntax
-brew "fd" # faster colorized find
-
-brew "jq" # jq json processor
-brew "mas" # mac app store command line
-
-# CLIs, Dev tools
-brew "libpq" # postgre cli
-brew "pgcli"
-brew "gh" # github cli
-cask "github"
-brew "awscli"
-cask "docker"
-brew "golang-migrate"
-
-brew "direnv"
-cask "ngrok"
-
+# coding
 cask "kitty"
 cask "visual-studio-code"
 cask "font-hack-nerd-font" # Add nerd font
 
 # language setup
-brew "yarn", args: ["ignore-dependencies"]
 brew "pnpm"
-brew "fnm" # node version manager
 
-cask "vlc"
+# Nvim related
+brew "neovim"
+# brew "tree-sitter"
+# brew "luajit", args: ["HEAD"] # no bottle for Apple Silicon
+
+# necessary
+cask "raycast"
+
+## work related
 cask "slack"
-cask "discord"
 cask "zoom"
 cask "google-chrome"
 cask "google-drive"
+
+brew "exa" # improved ls with color
+
+# brew "ripgrep"
+brew "fzf" # fuzzy search
+brew "bat" # smarter cat, syntax
+brew "fd" # faster colorized find
+
+brew "jq" # jq json processor
+# brew "mas" # mac app store command line
+
+# CLIs, Dev tools
+# brew "libpq" # postgre cli
+# brew "pgcli"
+# brew "gh" # github cli
+# cask "github"
+# brew "awscli"
+cask "docker"
+# brew "golang-migrate"
+
+cask "vlc"
+
+cask "discord"
+
 cask "notion"
-cask "obsidian"
+# cask "obsidian"
 
 cask "messenger"
 
 cask "kap"
 
 # Design Tool
-cask "inkscape"
+# cask "inkscape"
 cask "figma"
-cask "darktable"
+# cask "darktable"
 # cask "digikam" # todo: manage photo
 cask "handbrake"
 
@@ -79,10 +82,6 @@ cask "1password-cli"
 # cask "firefox"
 # cask "firefox-developer-edition"
 
-# Keybinding
-cask "hammerspoon"
-cask "karabiner-elements"
-
 # Stuff
 cask "brave-browser"
 cask "qbittorrent"
@@ -91,16 +90,16 @@ cask "qbittorrent"
 cask "steam" # new age, no more dota 2 for now
 
 cask "adobe-acrobat-reader"
-cask "android-studio"
+# cask "android-studio"
 
 cask "canva"
 
 cask "shortcat"
-cask "raycast"
+
 cask "anki"
 #
 # Window boot
-brew "wimlib"
+# brew "wimlib"
 
 # Should see if really needed?
 # brew "autoconf"

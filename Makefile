@@ -5,12 +5,11 @@ BREW          := $(BREW_BIN)/brew
 NVIM          := $(BREW_BIN)/nvim
 STOW          := $(BREW_BIN)/stow
 GIT           := $(BREW_BIN)/git
-VPLUG      := $(XDG_DATA_HOME)/nvim/site/autoload/plug.vim
 
 STOW_PKGS     := nvim 
 #STOW_PKGS     := emacs fish git kitty nvim starship tmux
 
-all: kitty
+all:
 neovim:
 	stow -vSt ~ neovim
 karabiner:
@@ -21,9 +20,3 @@ brew:
 	stow -vSt ~ brew
 kitty:
 	stow -vSt ~ kitty
-
-plug: | $(NVIM)
-	curl -fLo $(VPLUG) --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	chmod +x $(VPLUG)
-	sh -c $(VPLUG)
-	$(NVIM) +PlugInstall +qall
