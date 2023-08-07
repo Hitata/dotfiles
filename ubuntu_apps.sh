@@ -21,7 +21,14 @@ sudo dpkg-reconfigure keyboard-configuration
 sudo apt install stow
 
 ## coding editor
+sudo apt install neovim
 sudo snap install --classic code
+
+## stow
+fish
+chsh -s /usr/bin/fish
+stow -vSt ~ fish
+stow -vSt ~ kitty
 
 ## install node and pnpm
 sudo apt install curl -y
@@ -32,8 +39,12 @@ source ~/.bashrc
 
 ## install other
 sudo snap install telegram-desktop
-sudo apt install steam
 sudo apt install brave-browser
+sudo snap install notion-snap-reborn
+
+## game
+wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+sudo dpkg --install steam.deb
 
 ## work
 sudo snap install slack

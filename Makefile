@@ -10,10 +10,9 @@ VPLUG      := $(XDG_DATA_HOME)/nvim/site/autoload/plug.vim
 STOW_PKGS     := nvim 
 #STOW_PKGS     := emacs fish git kitty nvim starship tmux
 
-all:
-	brew
-nvim:
-	stow -vSt ~ nvim
+all: kitty
+neovim:
+	stow -vSt ~ neovim
 karabiner:
 	stow -vSt ~ karabiner
 hammerspoon:
