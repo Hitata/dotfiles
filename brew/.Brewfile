@@ -9,13 +9,15 @@ tap "homebrew/core"
 brew "curl"
 brew "git"
 brew "stow"
-brew "tmux"
 brew "openssl"
 brew "wget"
+brew "tmux"
+brew "fish"
 
 # Keybinding
 cask "hammerspoon"
 cask "karabiner-elements"
+cask "stats"
 
 # coding
 cask "kitty"
@@ -24,6 +26,7 @@ cask "font-hack-nerd-font" # Add nerd font
 
 # language setup
 brew "pnpm"
+brew "fnm"
 
 # Nvim related
 brew "neovim"
@@ -97,6 +100,8 @@ cask "canva"
 cask "shortcat"
 
 cask "anki"
+
+cask "cyberghost-vpn"
 #
 # Window boot
 # brew "wimlib"

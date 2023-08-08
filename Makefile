@@ -10,6 +10,11 @@ STOW_PKGS     := nvim
 #STOW_PKGS     := emacs fish git kitty nvim starship tmux
 
 all:
+
+fish:
+	stow fish
+tmux:
+	stow tmux
 neovim:
 	stow -vSt ~ neovim
 karabiner:

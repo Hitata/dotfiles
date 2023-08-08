@@ -15,7 +15,7 @@ set fish_bind_mode insert
 # This append into fish path everytime config is reload
 # set -gx PATH bin $PATH
 
-set -U EDITOR nvim
+set -gx EDITOR nvim
 
 # navigation
 alias ls "ls -p -G"

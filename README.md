@@ -15,23 +15,58 @@ softwareupdate --install-rosetta
 ```
 [apple support reference](https://support.apple.com/en-us/HT211861)
 
+# Change to fish
+## Symlink fish config 
+make sure symlink first before entering `fish` which generate folder and files in `.config`
+```
+stow fish
+```
+## add brew to $PATH
+[stackoverflow reference](https://stackoverflow.com/questions/66724016/my-fish-is-blind-fish-does-not-recognise-any-commands-after-setting-it-as-defa)
+```
+fish
+fish_add_path /opt/homebrew/bin
+```
+## Fish as default/login shell
+Either edit the `/etc/shells` or go to `User & Groups > Advanced Options`. ([fish reference](https://fishshell.com/docs/current/#default-shell))
+```
+echo $(which fish) | sudo tee -a /etc/shells # if not already exists
+chsh -s $(which fish)
+```
+
 # go to dotfile directory and symlink using stow
 ```
 stow brew
-stow karabiner
 stow kitty
+stow tmux
+stow karabiner
 ```
+
+# Node
+## FNM
+```
+fnm list
+fnm install 18 # node v18.17.0
+fnm use 18
+fnm default 18
+```
+
+# Neovim
 
 ## karabiner & keybinding
 mainly to switch ctrl to caplock
 
 # raycast
-a spotlight replacer
 ## Todo
 - Keyboard Shortcut > Spotlight > Off Show Spotlight search
 - Change Raycast hotkey to `CMD + space`
 ## Usage
 - window manager
+
+# Others
+## stats
+preference setup: [(battery_percent, housrs), network_in_out, disk_bar, gpu_bar, ram_pi_chart, clock_date]
+
 
 
 # Setting up for work
@@ -39,6 +74,9 @@ a spotlight replacer
 - sign in to google account
 - install Yomichan all 4 dictionaries (kanjidic, kireicake, jmnedict, jmdict)
 ## Slack
+
+# Setting up for Myself
+## Notion
 
 # Install IDE: neovim
 ## install vim-plug & plugins
