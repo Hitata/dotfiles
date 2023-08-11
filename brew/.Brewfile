@@ -14,6 +14,12 @@ brew "wget"
 brew "tmux"
 brew "fish"
 
+brew "exa" # improved ls with color
+# brew "ripgrep"
+brew "fzf" # fuzzy search
+brew "bat" # smarter cat, syntax
+brew "fd" # faster colorized find
+
 # Keybinding
 cask "hammerspoon"
 cask "karabiner-elements"
@@ -42,13 +48,6 @@ cask "zoom"
 cask "google-chrome"
 cask "google-drive"
 
-brew "exa" # improved ls with color
-
-# brew "ripgrep"
-brew "fzf" # fuzzy search
-brew "bat" # smarter cat, syntax
-brew "fd" # faster colorized find
-
 brew "jq" # jq json processor
 # brew "mas" # mac app store command line
 
@@ -69,6 +68,7 @@ cask "notion"
 # cask "obsidian"
 
 cask "messenger"
+cask "telegram"
 
 cask "kap"
 

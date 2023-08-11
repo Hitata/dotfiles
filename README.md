@@ -92,6 +92,13 @@ preference setup: [(battery_percent, housrs), network_in_out, disk_bar, gpu_bar,
 ./init_macos.sh
 
 ```
+
+
+# Communication
+## Messenger
+## Telegram
+[telegram or telegram-desktop](https://www.reddit.com/r/Telegram/comments/9apvh4/qmac_os_x_telegram_vs_telegram_desktop_which_one/)
+
 ### This includes
 - [x] Finder app config preference
 - [x] Dock config preference

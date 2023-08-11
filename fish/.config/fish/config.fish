@@ -48,7 +48,7 @@ alias fc "v -O $FISH_DIR/config.fish $FISH_DIR/functions/dotfile.fish"
 alias tc "v $TMUX_DIR/tmux.conf"
 
 alias bc "v $DOTFILE_DIR/brew/.Brewfile"
-alias brew_install "brew bundle --global"
+alias bi "brew bundle --global"
 alias brew_cleanup "brew bundle cleanup --global"
 
 if status is-interactive

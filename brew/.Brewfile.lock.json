@@ -1347,6 +1347,12 @@
         "options": {
           "full_name": "cyberghost-vpn"
         }
+      },
+      "telegram": {
+        "version": "9.7.2,250138",
+        "options": {
+          "full_name": "telegram"
+        }
       }
     }
   },
