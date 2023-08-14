@@ -9,11 +9,13 @@ GIT           := $(BREW_BIN)/git
 STOW_PKGS     := nvim 
 #STOW_PKGS     := emacs fish git kitty nvim starship tmux
 
-all:
-
+all: fish tmux neovim karabiner hammerspoon brew kitty
+	@echo "install all"
 fish:
+	@echo "symlink fish"
 	stow fish
 tmux:
+	@echo "symlink tmux"
 	stow tmux
 neovim:
 	stow -vSt ~ neovim

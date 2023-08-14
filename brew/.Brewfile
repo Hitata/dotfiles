@@ -13,6 +13,7 @@ brew "openssl"
 brew "wget"
 brew "tmux"
 brew "fish"
+brew "fisher"
 
 brew "exa" # improved ls with color
 # brew "ripgrep"
