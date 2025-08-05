@@ -37,7 +37,7 @@ alias vim "nvim"
 alias v "nvim"
 
 set -gx SITE_DIR $HOME/Sites
-set -gx DOTFILE_DIR $SITE_DIR/dotfiles
+set -gx DOTFILE_DIR $HOME/dotfiles
 set -gx NEOVIM_DIR $DOTFILE_DIR/neovim/.config/nvim
 set -gx FISH_DIR $DOTFILE_DIR/fish/.config/fish
 set -gx TMUX_DIR $DOTFILE_DIR/tmux/.config/tmux
@@ -61,4 +61,3 @@ if status is-interactive
   # cd $SITE_DIR # conflicts with 'tmux new -c' session
   # Commands to run in interactive sessions can go here
 end
-
