@@ -43,6 +43,12 @@ set -gx FISH_DIR $DOTFILE_DIR/fish/.config/fish
 set -gx TMUX_DIR $DOTFILE_DIR/tmux/.config/tmux
 set -gx VIMRC $NEOVIM_DIR/init.lua
 
+set -gx TRACK_JOB_PACKAGES_TOKEN "REMOVED_TOKEN"
+set -gx DEVELOP_API_HOST "https://api.job.tracks-dev.tokyo"
+set -gx API_HOST "/api"
+
+set -gx _OLD_VIRTUAL_PATH "$PATH"
+
 alias vc "v -O $NEOVIM_DIR/init.lua $NEOVIM_DIR/lua/keymaps.lua $NEOVIM_DIR/lua/plugins-setup.lua"
 alias fc "v -O $FISH_DIR/config.fish $FISH_DIR/functions/dotfile.fish"
 alias tc "v $TMUX_DIR/tmux.conf"

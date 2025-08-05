@@ -29,11 +29,13 @@ cask "stats"
 # coding
 cask "kitty"
 cask "visual-studio-code"
+cask "intellij-idea-ce"
 cask "font-hack-nerd-font" # Add nerd font
 
 # language setup
-brew "pnpm"
-brew "fnm"
+brew "yarn"
+brew "pnpm" # node package manager
+brew "fnm" # node version manager
 
 # Nvim related
 brew "neovim"
@@ -42,6 +44,7 @@ brew "neovim"
 
 # necessary
 cask "raycast"
+cask "keycastr"
 
 ## work related
 cask "slack"
@@ -55,7 +58,7 @@ brew "jq" # jq json processor
 # CLIs, Dev tools
 # brew "libpq" # postgre cli
 # brew "pgcli"
-# brew "gh" # github cli
+brew "gh" # github cli
 # cask "github"
 # brew "awscli"
 cask "docker"
@@ -63,12 +66,19 @@ cask "docker"
 
 cask "vlc"
 
+brew "rust"
+brew "mpv"
+brew "cmus"
+brew "yt-dlp"
+brew "pulseaudio"
+
 cask "discord"
 
 cask "notion"
-# cask "obsidian"
+cask "obsidian"
 
-cask "messenger"
+# cask "messenger"
+# cask "zalo" # install separate
 cask "telegram"
 
 cask "kap"
@@ -96,6 +106,7 @@ cask "steam" # new age, no more dota 2 for now
 cask "adobe-acrobat-reader"
 # cask "android-studio"
 
+cask "deepl"
 cask "canva"
 
 cask "shortcat"
@@ -105,7 +116,15 @@ cask "anki"
 cask "cyberghost-vpn"
 #
 # Window boot
-# brew "wimlib"
+cask "wine-stable"
+brew "wimlib"
+cask "the-unarchiver"
+
+cask "obs"
+cask "tradingview"
+cask "spotify"
+
+brew "vnstat"
 
 # Should see if really needed?
 # brew "autoconf"

@@ -62,6 +62,7 @@ mainly to switch ctrl to caplock
 - Change Raycast hotkey to `CMD + space`
 ## Usage
 - window manager
+- clipboard history
 
 # Others
 ## stats

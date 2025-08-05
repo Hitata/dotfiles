@@ -39,11 +39,11 @@ Hyper:bind({}, '1', function()
 end)
 
 Hyper:bind({}, '2', function()
-  App.launchOrFocusByBundleID('com.brave.Browser')
+  App.launchOrFocus('Obsidian')
 end)
 
 Hyper:bind({}, '3', function()
-  App.launchOrFocusByBundleID('notion.id')
+  App.launchOrFocus('Google Chrome')
 end)
 
 Hyper:bind({}, '4', function()
