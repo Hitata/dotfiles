@@ -31,6 +31,7 @@ alias gd "git diff"
 alias gdc "git diff --cached"
 alias gs "git show"
 alias gc "git commit"
+alias gco "git checkout"
 
 # file
 alias vim "nvim"
@@ -44,6 +45,7 @@ set -gx TMUX_DIR $DOTFILE_DIR/tmux/.config/tmux
 set -gx VIMRC $NEOVIM_DIR/init.lua
 
 set -gx TRACK_JOB_PACKAGES_TOKEN "REMOVED_TOKEN"
+set -gx TRACK_PACKAGES_TOKEN "REMOVED_TOKEN"
 set -gx DEVELOP_API_HOST "https://api.job.tracks-dev.tokyo"
 set -gx API_HOST "/api"
 
@@ -56,8 +58,14 @@ alias tc "v $TMUX_DIR/tmux.conf"
 alias bc "v $DOTFILE_DIR/brew/.Brewfile"
 alias bi "brew bundle --global"
 alias brew_cleanup "brew bundle cleanup --global"
+alias clauded="claude --dangerously-skip-permissions"
 
 if status is-interactive
   # cd $SITE_DIR # conflicts with 'tmux new -c' session
   # Commands to run in interactive sessions can go here
 end
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# Added by Antigravity
+fish_add_path /Users/hit/.antigravity/antigravity/bin

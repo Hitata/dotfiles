@@ -1,6 +1,6 @@
 ## Navigation
 <C-a>c    : open current path in new window
-<C-a>¥    : open current path in horizontal split
+<C-a>|    : open current path in horizontal split
 <C-a>-    : open current path in vertical split
 
 <C-a>w    : window list

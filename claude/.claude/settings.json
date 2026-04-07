@@ -1,0 +1,124 @@
+{
+  "model": "opus",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y ccstatusline@latest --hook"
+          }
+        ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y ccstatusline@latest --hook"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '\\a'"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y ccstatusline@latest --hook"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y ccstatusline@latest --hook"
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"Task completed\\n📋 \" + (.task_name // .subject // \"Task\") + \"\\n📁 \" + ((.cwd // \"unknown\") | split(\"/\") | .[-1])' | { read -r msg; notify-telegram \"$msg\"; } 2>/dev/null || true"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '\\a'"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_response.error // .tool_response // \"Tool failed\"' | { read -r err; notify-telegram \"Error: $err\"; } 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.error // \"Session error\"' | { read -r err; notify-telegram \"Error: $err\"; } 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y ccstatusline@latest",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "claude-code-setup@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true,
+    "playwright@claude-plugins-official": true,
+    "jobs-to-be-done@pm-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "ui-ux-pro-max-skill": {
+      "source": {
+        "source": "github",
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill"
+      }
+    },
+    "pm-skills": {
+      "source": {
+        "source": "github",
+        "repo": "deanpeters/Product-Manager-Skills"
+      }
+    }
+  },
+  "voiceEnabled": true,
+  "skipDangerousModePermissionPrompt": true
+}

@@ -35,8 +35,8 @@ end)
 
 -- shortkey to application
 Hyper:bind({}, '1', function()
-  -- App.launchOrFocusByBundleID('net.kovidgoyal.kitty')
-  App.launchOrFocus('ChatGPT')
+  App.launchOrFocusByBundleID('net.kovidgoyal.kitty')
+  -- App.launchOrFocus('ChatGPT')
 end)
 
 Hyper:bind({}, '2', function()
@@ -49,6 +49,10 @@ end)
 
 Hyper:bind({}, '4', function()
   App.launchOrFocusByBundleID('com.tinyspeck.slackmacgap')
+end)
+
+Hyper:bind({}, 'q', function()
+  App.launchOrFocus('cursor')
 end)
 
 -- MoveWindows = spoon.WindowMove
