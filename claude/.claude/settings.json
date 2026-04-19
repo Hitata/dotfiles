@@ -118,8 +118,6 @@
     "typescript-lsp@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "ui-ux-pro-max@ui-ux-pro-max-skill": true,
-    "playwright@claude-plugins-official": true,
-    "jobs-to-be-done@pm-skills": true,
     "superpowers@claude-plugins-official": true,
     "impeccable@impeccable": true,
     "code-review@claude-plugins-official": true,
