@@ -1,0 +1,5 @@
+- [User core profile](user_core_profile.md) — ADHD-like multi-threaded learner, existential tech urgency, needs delegation
+- [Communication style](user_communication_style.md) — compressed directives, voice dumps, fast decisions. How Claude should respond.
+- [Four core needs](project_four_core_needs.md) — Memory, Learning, Singularity, Mundane+Companion — the pillars of Second Mind
+- [Always link issues](feedback_issue_links.md) — use Hitata/second-mind#N format so issues are clickable
+- [Session history log](feedback_session_history_log.md) — refined timeline of all sessions: decisions, builds, pivots

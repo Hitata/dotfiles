@@ -1,1 +1,28 @@
 Brewfile.lock.json
+
+# Claude: never commit secrets, history, or machine-local state
+claude/.claude/.credentials.json
+claude/.claude/history.jsonl
+claude/.claude/sessions/
+# projects/ holds per-project state; sync memory/ only, never session transcripts
+claude/.claude/projects/**
+!claude/.claude/projects/
+!claude/.claude/projects/*/
+!claude/.claude/projects/*/memory/
+!claude/.claude/projects/*/memory/**
+claude/.claude/session-env/
+claude/.claude/shell-snapshots/
+claude/.claude/cache/
+claude/.claude/paste-cache/
+claude/.claude/backups/
+claude/.claude/file-history/
+claude/.claude/telemetry/
+claude/.claude/tasks/
+claude/.claude/plans/
+claude/.claude/plugins/
+claude/.claude/mcp-needs-auth-cache.json
+claude/.claude/settings.json.bak
+claude/.claude/settings.json.orig
+claude/.claude/settings.local.json
+claude/.claude/get-shit-done/
+claude/.claude/gsd-file-manifest.json
