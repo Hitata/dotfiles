@@ -103,7 +103,9 @@
     "skill-creator@claude-plugins-official": true,
     "ui-ux-pro-max@ui-ux-pro-max-skill": true,
     "playwright@claude-plugins-official": true,
-    "jobs-to-be-done@pm-skills": true
+    "jobs-to-be-done@pm-skills": true,
+    "superpowers@claude-plugins-official": true,
+    "impeccable@impeccable": true
   },
   "extraKnownMarketplaces": {
     "ui-ux-pro-max-skill": {
@@ -116,6 +118,12 @@
       "source": {
         "source": "github",
         "repo": "deanpeters/Product-Manager-Skills"
+      }
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
       }
     }
   },
