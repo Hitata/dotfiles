@@ -44,8 +44,7 @@ set -gx FISH_DIR $DOTFILE_DIR/fish/.config/fish
 set -gx TMUX_DIR $DOTFILE_DIR/tmux/.config/tmux
 set -gx VIMRC $NEOVIM_DIR/init.lua
 
-set -gx TRACK_JOB_PACKAGES_TOKEN "REMOVED_TOKEN"
-set -gx TRACK_PACKAGES_TOKEN "REMOVED_TOKEN"
+test -f $FISH_DIR/secrets.fish; and source $FISH_DIR/secrets.fish
 set -gx DEVELOP_API_HOST "https://api.job.tracks-dev.tokyo"
 set -gx API_HOST "/api"
 

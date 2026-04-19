@@ -1,6 +1,7 @@
 Brewfile.lock.json
 .DS_Store
 karabiner/.config/karabiner/automatic_backups/
+fish/.config/fish/secrets.fish
 
 # Claude: never commit secrets, history, or machine-local state
 claude/.claude/.credentials.json
