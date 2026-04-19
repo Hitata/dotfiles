@@ -1,0 +1,2 @@
+- [Issue changelog comments](feedback_issue-changelog.md) — always log decisions and changes to relevant GitHub issues
+- [Hook vs memory model](feedback_hook-vs-memory.md) — deterministic/visible = hook, probabilistic/hidden = memory

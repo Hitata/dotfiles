@@ -1,6 +1,16 @@
 {
   "model": "opus",
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/gsd-check-update.js\""
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
         "matcher": "Skill",
@@ -12,11 +22,24 @@
         ]
       },
       {
-        "matcher": "Skill",
+        "matcher": "Write|Edit",
         "hooks": [
           {
             "type": "command",
-            "command": "npx -y ccstatusline@latest --hook"
+            "command": "node \"$HOME/.claude/hooks/gsd-prompt-guard.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|MultiEdit|Agent|Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/hooks/gsd-context-monitor.js\"",
+            "timeout": 10
           }
         ]
       }
@@ -27,19 +50,16 @@
           {
             "type": "command",
             "command": "printf '\\a'"
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/hooks/notify.sh",
+            "timeout": 10
           }
         ]
       }
     ],
     "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "npx -y ccstatusline@latest --hook"
-          }
-        ]
-      },
       {
         "hooks": [
           {
@@ -55,11 +75,7 @@
           {
             "type": "command",
             "command": "jq -r '\"Task completed\\n📋 \" + (.task_name // .subject // \"Task\") + \"\\n📁 \" + ((.cwd // \"unknown\") | split(\"/\") | .[-1])' | { read -r msg; notify-telegram \"$msg\"; } 2>/dev/null || true"
-          }
-        ]
-      },
-      {
-        "hooks": [
+          },
           {
             "type": "command",
             "command": "printf '\\a'"
@@ -105,7 +121,9 @@
     "playwright@claude-plugins-official": true,
     "jobs-to-be-done@pm-skills": true,
     "superpowers@claude-plugins-official": true,
-    "impeccable@impeccable": true
+    "impeccable@impeccable": true,
+    "code-review@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "ui-ux-pro-max-skill": {
