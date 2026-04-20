@@ -36,12 +36,11 @@ echo $(which fish) | sudo tee -a /etc/shells # if not already exists
 chsh -s $(which fish)
 ```
 
-# go to dotfile directory and symlink using stow
-```
-stow brew
-stow tmux
-stow karabiner
-```
+# Deploy dotfiles
+
+chezmoi manages all configs (fish, tmux, nvim, karabiner, hammerspoon, claude,
+npm globals) — auto-deploys via `./install.sh` on a fresh box, or `chezmoi
+apply` for updates. stow is no longer used.
 
 # Node
 ## FNM
@@ -81,13 +80,17 @@ preference setup: [(battery_percent, housrs), network_in_out, disk_bar, gpu_bar,
 ## Notion
 
 # Install IDE: neovim
-## install vim-plug & plugins
+Neovim config is deployed by chezmoi. Plugins bootstrap automatically on first
+`chezmoi apply` via `home/run_once_after_install-nvim-plugins.sh.tmpl` — it
+clones packer.nvim and runs `:PackerSync` headless.
+
+To reinstall plugins manually:
 ```bash
-./init_vim.sh
+nvim --headless -c 'PackerSync' -c 'quitall'
 ```
 
 ## install typescript & tsserver
-- run `yarn global add typescript typescript-language-server`
+- add to `~/.config/npm/globals.txt` then run `chezmoi apply`
 
 ## Run Macos preference setup
 ```

@@ -36,20 +36,20 @@ else
   ok "secrets extracted, ssh perms set"
 fi
 
-# ─── 2. Dotfiles (Claude config + memory) ──────────────────────────────
-step "2/6 · Cloning dotfiles + running 'make claude'"
+# ─── 2. Dotfiles (chezmoi-managed: fish, tmux, nvim, karabiner, hammerspoon, claude) ───
+step "2/6 · Cloning dotfiles + running chezmoi apply"
 if [[ -d "$HOME/dotfiles/.git" ]]; then
   skip "$HOME/dotfiles already cloned"
 else
   git clone "$DOTFILES_REPO" "$HOME/dotfiles"
   ok "dotfiles cloned"
 fi
-if command -v stow >/dev/null 2>&1; then
-  (cd "$HOME/dotfiles" && make claude)
-  ok "claude stow linked"
+if command -v chezmoi >/dev/null 2>&1; then
+  (cd "$HOME/dotfiles" && ./install.sh)
+  ok "chezmoi applied (fish, tmux, nvim, karabiner, hammerspoon, claude)"
 else
-  echo "  ⚠ 'stow' not installed — run 'brew install stow' (or apt install stow), then:"
-  echo "    cd ~/dotfiles && make claude"
+  echo "  ⚠ 'chezmoi' not installed — run 'brew install chezmoi', then:"
+  echo "    cd ~/dotfiles && ./install.sh"
 fi
 
 # ─── 3. Project repo ──────────────────────────────────────────────────

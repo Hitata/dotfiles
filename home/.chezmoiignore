@@ -28,6 +28,13 @@
 .claude/settings.local.json
 .claude/get-shit-done/**
 .claude/gsd-file-manifest.json
+.claude/debug/**
+.claude/downloads/**
+.claude/skills/**
+.claude/statsig/**
+.claude/statsig.*
+.claude/stats-cache.json
+.claude/todos/**
 
 # Claude project sessions are per-machine; only memory/ is shared
 .claude/projects/*/!(memory)/**
