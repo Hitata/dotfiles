@@ -7,7 +7,8 @@ set -euo pipefail
 INPUT=$(cat)
 MSG=$(echo "$INPUT" | jq -r '.message // "done"')
 PROJECT=$(basename "${CLAUDE_PROJECT_DIR:-${PWD}}")
-TITLE="Claude Code | ${PROJECT}"
+DEVICE=$(scutil --get ComputerName 2>/dev/null || hostname -s)
+TITLE="Claude Code | ${DEVICE} | ${PROJECT}"
 
 # Truncate message to 200 chars for compact display
 if [ ${#MSG} -gt 200 ]; then
