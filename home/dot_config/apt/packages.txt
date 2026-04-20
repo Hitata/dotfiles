@@ -1,0 +1,31 @@
+# Core
+curl
+git
+gnupg
+ca-certificates
+
+# Shell + terminal
+fish
+tmux
+fzf
+
+# Editor
+neovim
+
+# Modern CLI
+bat
+fd-find
+jq
+
+# GitHub CLI (Ubuntu 22.04+)
+gh
+
+# Node runtime (pair with fnm for version switching)
+nodejs
+
+# Media CLIs
+mpv
+yt-dlp
+
+# System utilities
+usb-creator-gtk

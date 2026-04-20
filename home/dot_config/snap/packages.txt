@@ -1,0 +1,14 @@
+# Format: package [--classic|--edge|--beta]
+# One per line, flags optional. Lines starting with # are ignored.
+
+# Coding
+code --classic
+
+# Work
+slack --classic
+
+# Messaging
+telegram-desktop
+
+# Notes
+notion-snap-reborn

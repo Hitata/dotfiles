@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Re-runs when the manifest changes — hash pinned below.
+# Manifest hash: {{ include "dot_config/snap/packages.txt" | sha256sum }}
+set -euo pipefail
+
+if ! command -v snap >/dev/null 2>&1; then
+    exit 0  # No snapd — no-op on macOS or snap-less Linux
+fi
+
+MANIFEST="${HOME}/.config/snap/packages.txt"
+[[ -f "$MANIFEST" ]] || exit 0
+
+echo "==> snap install from $MANIFEST"
+while IFS= read -r line; do
+    # Strip comments + blank lines
+    line="${line%%#*}"
+    line="$(echo "$line" | xargs)"
+    [[ -z "$line" ]] && continue
+
+    # Split into package + flags
+    # shellcheck disable=SC2086
+    pkg=$(echo $line | awk '{print $1}')
+
+    if snap list "$pkg" >/dev/null 2>&1; then
+        echo "  · $pkg already installed"
+        continue
+    fi
+
+    echo "  + snap install $line"
+    # shellcheck disable=SC2086
+    sudo snap install $line
+done < "$MANIFEST"

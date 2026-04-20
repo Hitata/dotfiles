@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# One-time bootstrap for Ubuntu-only installers that don't fit apt/snap.
+# Each step is idempotent via `command -v` guards.
+# Re-runs only when this script's content changes (run_once + chezmoi state).
+set -euo pipefail
+
+if ! command -v apt-get >/dev/null 2>&1; then
+    exit 0  # Not Debian/Ubuntu
+fi
+
+step() { echo ""; echo "── $* ──"; }
+
+# ── fnm (node version manager) ───────────────────────────────
+step "fnm"
+if command -v fnm >/dev/null 2>&1; then
+    echo "  · already installed"
+else
+    curl -fsSL https://fnm.vercel.app/install | bash
+fi
+
+# ── pnpm ─────────────────────────────────────────────────────
+step "pnpm"
+if command -v pnpm >/dev/null 2>&1; then
+    echo "  · already installed"
+else
+    curl -fsSL https://get.pnpm.io/install.sh | sh -
+fi
+
+# ── Claude Code ──────────────────────────────────────────────
+step "Claude Code"
+if command -v claude >/dev/null 2>&1; then
+    echo "  · already installed"
+else
+    curl -fsSL https://claude.ai/install.sh | bash
+fi
+
+# ── Brave browser ────────────────────────────────────────────
+step "Brave"
+if command -v brave-browser >/dev/null 2>&1; then
+    echo "  · already installed"
+else
+    curl -fsS https://dl.brave.com/install.sh | sh
+fi
+
+# ── cloudflared (APT via Cloudflare repo) ────────────────────
+step "cloudflared"
+if command -v cloudflared >/dev/null 2>&1; then
+    echo "  · already installed"
+else
+    curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg \
+        | sudo tee /usr/share/keyrings/cloudflare-main.gpg > /dev/null
+    echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main" \
+        | sudo tee /etc/apt/sources.list.d/cloudflared.list > /dev/null
+    sudo apt-get update -qq
+    sudo apt-get install -y cloudflared
+fi
+
+echo ""
+echo "==> Ubuntu extras bootstrap complete"

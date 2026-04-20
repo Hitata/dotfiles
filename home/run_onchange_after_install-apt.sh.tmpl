@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Re-runs when the manifest changes — hash pinned below.
+# Manifest hash: {{ include "dot_config/apt/packages.txt" | sha256sum }}
+set -euo pipefail
+
+if ! command -v apt-get >/dev/null 2>&1; then
+    exit 0  # Not Debian/Ubuntu — no-op on macOS
+fi
+
+MANIFEST="${HOME}/.config/apt/packages.txt"
+[[ -f "$MANIFEST" ]] || exit 0
+
+pkgs=$(grep -vE '^\s*(#|$)' "$MANIFEST" || true)
+[[ -z "$pkgs" ]] && exit 0
+
+echo "==> apt update"
+sudo apt-get update -qq
+
+echo "==> apt install from $MANIFEST"
+# shellcheck disable=SC2086
+sudo apt-get install -y $pkgs
