@@ -1,9 +1,7 @@
 # vim:fileencoding=utf-8:ft=conf
 
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/core"
+# homebrew/bundle, homebrew/cask, homebrew/core, homebrew/cask-fonts:
+# no longer needed — bundle/cask/core are built in, cask-fonts was merged into homebrew/cask.
 tap "supabase/tap"
 
 # ──────────────────────────────────────────────────────────────
@@ -22,10 +20,11 @@ brew "openssl"
 # brew "coreutils" # cat, ls, rm
 
 # Modern CLI replacements
-brew "exa"          # improved ls with color
+brew "eza"          # improved ls with color (maintained fork of exa)
 brew "bat"          # smarter cat with syntax
 brew "fd"           # faster, colorized find
 brew "fzf"          # fuzzy search
+brew "git-delta"    # syntax-highlighted diff pager (used by chezmoi)
 # brew "ripgrep"
 
 # Dev CLIs
