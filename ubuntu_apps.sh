@@ -17,17 +17,16 @@ XKBOPTIONS="ctrl:nocaps"
 ```
 sudo dpkg-reconfigure keyboard-configuration
 
-## dotfile config
-sudo apt install stow
+## dotfile config (chezmoi manages fish, tmux, nvim, npm globals)
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply Hitata
 
 ## coding editor
 sudo apt install neovim
 sudo snap install --classic code
 
-## stow
-fish
+## fish shell
+sudo apt install fish
 chsh -s /usr/bin/fish
-stow -vSt ~ fish
 
 ## install node and pnpm
 sudo apt install curl -y
