@@ -1,148 +1,113 @@
-# Setup
-- Go to https://brew.sh
-- Follow instruction and install brew
-## Run brew
-```
-brew bundle --file=~/dotfiles/brew/.Brewfile
-```
-Check out [Brew Manual](/BrewManual.md)
+# dotfiles
 
-# Install Rosetta needed in Mac with Apple silicon
-In order to run "universal" app which is usual for Intel processor, we need to manual update with Rosetta
-mainly to run steam
+Managed by [chezmoi](https://www.chezmoi.io). One source of truth for fish,
+tmux, nvim, hammerspoon, karabiner, ghostty, claude, and package manifests
+(brew/apt/snap/npm).
+
+## Bootstrap a fresh machine
+
+### macOS
+
+```bash
+git clone git@github.com:Hitata/dotfiles.git ~/dotfiles
+cd ~/dotfiles && ./install.sh
+```
+
+`install.sh` is idempotent. It:
+
+1. Installs Homebrew if missing
+2. Installs chezmoi
+3. Symlinks `~/.local/share/chezmoi` → `~/dotfiles/home`
+4. Runs `chezmoi apply`, which fires the `run_once` / `run_onchange` hooks
+   (brew bundle, nvim plugins, npm globals).
+
+After first apply, set fish as login shell:
+
+```bash
+echo (which fish) | sudo tee -a /etc/shells
+chsh -s (which fish)
+```
+
+Apple Silicon machines that need Intel apps (e.g. Steam):
+
 ```bash
 softwareupdate --install-rosetta
 ```
-[apple support reference](https://support.apple.com/en-us/HT211861)
 
-# Change to fish
-## Apply fish config via chezmoi
-Fish config is managed by chezmoi (see [Migration plan #1](https://github.com/Hitata/dotfiles/issues/1)). Run once to bootstrap:
-```
-./install.sh
-```
-Then `chezmoi apply` any time after pulling changes.
+### Ubuntu
 
-## add brew to $PATH
-[stackoverflow reference](https://stackoverflow.com/questions/66724016/my-fish-is-blind-fish-does-not-recognise-any-commands-after-setting-it-as-defa)
-```
-fish
-fish_add_path /opt/homebrew/bin
-```
-## Fish as default/login shell
-Either edit the `/etc/shells` or go to `User & Groups > Advanced Options`. ([fish reference](https://fishshell.com/docs/current/#default-shell))
-```
-echo $(which fish) | sudo tee -a /etc/shells # if not already exists
-chsh -s $(which fish)
-```
+See [UBUNTU_SETUP.md](UBUNTU_SETUP.md). One-liner bootstrap via `chezmoi init --apply Hitata`.
 
-# Deploy dotfiles
+## Daily workflow
 
-chezmoi manages all configs (fish, tmux, nvim, karabiner, hammerspoon, claude,
-npm globals) — auto-deploys via `./install.sh` on a fresh box, or `chezmoi
-apply` for updates. stow is no longer used.
-
-# Node
-## FNM
-```
-fnm list
-fnm install 18 # node v18.17.0
-fnm use 18
-fnm default 18
-```
-
-# Neovim
-
-## karabiner & keybinding
-mainly to switch ctrl to caplock
-
-# raycast
-## Todo
-- Keyboard Shortcut > Spotlight > Off Show Spotlight search
-- Change Raycast hotkey to `CMD + space`
-## Usage
-- window manager
-- clipboard history
-
-# Others
-## stats
-preference setup: [(battery_percent, housrs), network_in_out, disk_bar, gpu_bar, ram_pi_chart, clock_date]
-
-
-
-# Setting up for work
-## Google Chrome
-- sign in to google account
-- install Yomichan all 4 dictionaries (kanjidic, kireicake, jmnedict, jmdict)
-## Slack
-
-# Setting up for Myself
-## Notion
-
-# Install IDE: neovim
-Neovim config is deployed by chezmoi. Plugins bootstrap automatically on first
-`chezmoi apply` via `home/run_once_after_install-nvim-plugins.sh.tmpl` — it
-clones packer.nvim and runs `:PackerSync` headless.
-
-To reinstall plugins manually:
 ```bash
-nvim --headless -c 'PackerSync' -c 'quitall'
+chezmoi status    # see drift between repo and $HOME
+chezmoi apply     # pull repo state into $HOME
+chezmoi re-add    # pull local edits back into the repo (when you edit ~/.config/* directly)
 ```
 
-## install typescript & tsserver
-- add to `~/.config/npm/globals.txt` then run `chezmoi apply`
+Edit configs in `~/dotfiles/home/dot_config/...` and commit. `chezmoi apply`
+any time after pulling changes on another machine.
 
-## Run Macos preference setup
+## Package manifests
+
+| Manifest | Location | Applied by |
+|---|---|---|
+| Homebrew | `home/dot_config/brew/Brewfile` | `run_onchange_after_install-brew.sh.tmpl` |
+| APT | `home/dot_config/apt/packages.txt` | `run_onchange_after_install-apt.sh.tmpl` |
+| Snap | `home/dot_config/snap/packages.txt` | `run_onchange_after_install-snap.sh.tmpl` |
+| npm globals | `home/dot_config/npm/globals.txt` | `run_onchange_after_install-npm-globals.sh.tmpl` |
+
+Add a line, commit, `chezmoi apply` — the hook re-runs when the manifest changes.
+
+See [BrewManual.md](BrewManual.md) for brew bundle commands.
+
+## Keymaps
+
+- [TMUX_KEYMAP.md](TMUX_KEYMAP.md) — prefix is `C-a`
+- [VIM_KEYMAP.md](VIM_KEYMAP.md) — leader is `,`
+- [YOUTUBE_KEYMAP.md](YOUTUBE_KEYMAP.md)
+
+## Hammerspoon (macOS)
+
+Hyper key is **F19** (remapped from CapsLock via karabiner).
+
+| Chord | App |
+|---|---|
+| F19 + 1 | Ghostty |
+| F19 + 2 | Obsidian |
+| F19 + 3 | Chrome |
+| F19 + 4 | Slack |
+| F19 + q | Cursor |
+| F19 + Shift + R | Reload Hammerspoon |
+| F19 + Shift + T | Toggle Hammerspoon console |
+| Cmd + Alt + arrow | MiroWindowsManager tile |
+
+## Claude Code
+
+- Setup notes: [CLAUDE_SETUP.md](CLAUDE_SETUP.md)
+- Telegram notifications: [CLAUDE_TELEGRAM.md](CLAUDE_TELEGRAM.md)
+
+## Node (fnm)
+
+```bash
+fnm install 22
+fnm default 22
 ```
-./init_macos.sh
+
+## Git commit convention
+
+`<type>(<scope>): <imperative subject>` — atomic, in imperative mood ("If
+applied this commit will…").
+
+**Types:** `feat` `fix` `docs` `refa` `perf` `test` `cicd` `buil` `chor` `styl`
+
+**Common scopes:** `brew` `nvim` `fish` `tmux` `hammerspoon` `ghostty` `claude` `chezmoi`
+
+Examples:
 
 ```
-
-
-# Communication
-## Messenger
-## Telegram
-[telegram or telegram-desktop](https://www.reddit.com/r/Telegram/comments/9apvh4/qmac_os_x_telegram_vs_telegram_desktop_which_one/)
-
-### This includes
-- [x] Finder app config preference
-- [x] Dock config preference
-- [ ] Hot corners?
-- [ ] Safari & Webkit:q
-
-# TODO
-- [ ] Use stow to symlink all this to .config
- - [ ] brew install stow, stow symlink brew global :think:
-
-# Reference
-
-# Git commit convention
-## types
-- [x] fixs: patch
-- [x] feat: minor
-- [x] docs: documents
-- [x] refa: refactor
-- [x] perf: performance improvement
-- [x] test: write tests
-- [x] cicd: CI/CD stuff
-- [x] buil:
-- [x] chor:
-- [x] styl:
-
-## scope
-- [x] brew
-- [x] nvim
-- [x] fish
-- [x] tmux
-- [x] hammerspoon
-
-## description format
-- must be in imperative mood, which is a demand
-- Can fit into this sentense: If applied this commmit will `your subject line here`
-- atomic commits approach: commit each fix/task as separate change
-```
-Ex:
-1. feat(brew): install brave for browsing web without ads
-2. fix(hammerspoon): update WindowMove spoon to hyper+m
-3. docs(nvim): update git blame keybind to ,gco
+feat(hammerspoon): bind Hyper+1 to Ghostty instead of Terminal
+fix(tmux): switch default-shell to homebrew fish path
+docs(nvim): document :G status binding
 ```

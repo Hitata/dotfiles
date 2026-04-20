@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# macOS `defaults write` tweaks for Dock and Finder.
+# Re-runs when this script changes. Idempotent — `defaults write` is safe to re-apply.
+set -euo pipefail
+
+if [[ "$(uname)" != "Darwin" ]]; then
+    exit 0
+fi
+
+step() { echo ""; echo "── $* ──"; }
+
+# ── Dock ─────────────────────────────────────────────────────
+step "Dock"
+defaults write com.apple.dock mouse-over-hilite-stack -bool true
+defaults write com.apple.dock tilesize -int 48
+defaults write com.apple.dock mineffect -string "scale"
+defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+defaults write com.apple.dock show-process-indicators -bool true
+defaults write com.apple.dock launchanim -bool false
+defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write com.apple.dock expose-group-by-app -bool false
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock showhidden -bool true
+defaults write com.apple.dock hide-mirror -bool true
+killall Dock || true
+
+# ── Finder ───────────────────────────────────────────────────
+# Search scope: SCcf=Current Folder, SCev=This Mac, SCsp=Previous
+# View style:   clmv=Column, Nlsv=List, icnv=Icon, Flwv=Cover Flow
+# New window:   PfDe=Desktop, PfHm=Home, PfCm=Computer, PfLo=custom path
+step "Finder"
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+defaults write com.apple.finder NewWindowTarget -string "PfDe"
+defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+defaults write com.apple.finder ShowPathbar -bool true
+rm -f "$HOME/.DS_Store"
+killall Finder || true
+
+echo ""
+echo "==> macOS defaults applied"

@@ -1,15 +1,20 @@
-# Claude Code → Telegram Notifications
+# Claude Code → Telegram notifications
 
-Setup for automatic Telegram notifications when Claude Code tasks complete or errors occur.
+Hook setup that pings a Telegram bot when Claude Code tasks finish or tools
+fail. Bot token lives outside version control at `~/.config/telegram-bot-token`.
 
-## Configuration
+## Pieces
 
-### 1. Bot Token & Chat ID
-- **Bot Token**: Stored in `~/.config/telegram-bot-token`
-- **Chat ID**: `5657771153`
+| Piece | Location |
+|---|---|
+| Bot token | `~/.config/telegram-bot-token` (gitignored) |
+| Chat ID | Hardcoded in `notify-telegram` |
+| Notifier script | `~/.local/bin/notify-telegram` |
+| Hook wiring | `~/.claude/settings.json` → `hooks` |
 
-### 2. Notification Script
-Location: `~/.local/bin/notify-telegram`
+## Notifier script
+
+`~/.local/bin/notify-telegram`:
 
 ```bash
 #!/bin/bash
@@ -17,25 +22,22 @@ TOKEN=$(cat ~/.config/telegram-bot-token)
 CHAT_ID="5657771153"
 MESSAGE="$1"
 
-if [ -z "$MESSAGE" ]; then
-  echo "Usage: notify-telegram 'Your message'"
-  exit 1
-fi
+[ -z "$MESSAGE" ] && { echo "Usage: notify-telegram 'message'"; exit 1; }
 
 curl -s -X POST "https://api.telegram.org/bot${TOKEN}/sendMessage" \
   -d "chat_id=${CHAT_ID}" \
   -d "text=${MESSAGE}" > /dev/null
-
-echo "Notification sent to Telegram"
 ```
 
-### 3. Hooks Configuration
-Configured in `~/.claude/settings.json` under the `hooks` section:
+Make it executable: `chmod +x ~/.local/bin/notify-telegram`.
 
-#### TaskCompleted Hook
-Sends a notification when a task completes with:
-- Task name/subject
-- Project folder name
+## Hooks
+
+All three are stanzas under `hooks` in `~/.claude/settings.json`. They pipe the
+hook's JSON payload through `jq` to build a message and hand it to
+`notify-telegram`. Errors are swallowed so a broken bot never blocks Claude.
+
+### TaskCompleted — task name + project
 
 ```json
 "TaskCompleted": [
@@ -50,15 +52,7 @@ Sends a notification when a task completes with:
 ]
 ```
 
-**Example notification:**
-```
-Task completed
-📋 Fix authentication bug
-📁 dotfiles
-```
-
-#### PostToolUseFailure Hook
-Sends a notification when a tool (Bash, Read, Edit, etc.) fails with an error.
+### PostToolUseFailure — tool error
 
 ```json
 "PostToolUseFailure": [
@@ -73,8 +67,7 @@ Sends a notification when a tool (Bash, Read, Edit, etc.) fails with an error.
 ]
 ```
 
-#### StopFailure Hook
-Sends a notification when a session encounters a critical error.
+### StopFailure — session error
 
 ```json
 "StopFailure": [
@@ -89,29 +82,12 @@ Sends a notification when a session encounters a critical error.
 ]
 ```
 
-## Manual Usage
+## Manual send
 
-Send a notification from the command line:
 ```bash
-notify-telegram "Your message here"
+notify-telegram "your message"
 ```
 
-## Security Notes
+## Managing from inside Claude Code
 
-- Bot token is stored in `~/.config/telegram-bot-token` (not in version control)
-- Chat ID is private
-- Token is read from file each time (not hardcoded in scripts)
-
-## Managing Hooks
-
-To view or edit hooks in Claude Code:
-- Use `/hooks` command in Claude Code
-- Hooks can be disabled/enabled individually
-- Configuration persists across sessions
-
-## Testing
-
-All three hooks have been tested and are working:
-- ✓ TaskCompleted notification
-- ✓ PostToolUseFailure notification
-- ✓ StopFailure notification
+`/hooks` — view, toggle, or edit hooks. Changes persist across sessions.

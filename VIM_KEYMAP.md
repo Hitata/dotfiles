@@ -1,55 +1,68 @@
-## List of Vim Keybinds
+# Neovim keymap
 
-### Nvim-Tree
-,n    : focus back to nerdtree
-g?    : help
-<C+k> : show info
-m     : bookmark?
-a     : add new node
-r     : rename new node
-d     : delete
-R : refresh
+Leader: `,`. Config: `home/dot_config/nvim/`.
 
-### Comment
-gcc   : comment out a line
-gbc   : comment out a block 
-gcj   : toggle comment 2 line below
-gc2j  : toggle comment 3 lien below
+## Core
 
-### Git
-:G status : git status
-,ga   : add current hunk to git stage
-,gu   : undo current hunk
-,gn   : next git edit hunk
-,gp   : previous git edit hunk
-,gb   : show line in github browser
-vjj,gb   : select 3 line and show line in github browser
+| Chord | Action |
+|---|---|
+| `jk` | Save file (insert-mode escape + write) |
+| `<S-k>` | Show help / go to definition (LSP hover) |
+| `,cv` | Open `$MYVIMRC` |
+| `,sv` | Source `$MYVIMRC` |
 
-## Navigation
-### motion `:h jump-motions`
+## nvim-tree
 
-### non-motion jump
-<c-o> : move forward that are not motion
-<c-i> : move forward that are not motion
-:ju : jump list
+| Chord | Action |
+|---|---|
+| `,n` | Focus tree |
+| `g?` | Help |
+| `<C-k>` | Show node info |
+| `a` | Add node |
+| `r` | Rename node |
+| `d` | Delete node |
+| `R` | Refresh |
+| `m` | Bookmark |
 
-## Stuff
-jk    : save file
-<s-k> : show help (vim default) and go to definition
+## Comments
 
-## File moving
-gf    : go to the filename under the cursor
-<C-w>f: open filename under the cursor in split view
-<C-^> : previous file
-<C-f> : fzf on all file
-<C-p> : fzf on git file
- - <C-x> : fzf open →
- - <C-v> : fzf open ↓
- - <C-t> : fzf open tab
+| Chord | Action |
+|---|---|
+| `gcc` | Toggle line comment |
+| `gbc` | Toggle block comment |
+| `gc2j` | Toggle comment on 3 lines below (current + 2) |
 
-## Vimrc
-,cv open $MYVIMRC
-,sv source $MYVIMRC
+## Git
 
+| Chord | Action |
+|---|---|
+| `:G status` | Git status |
+| `,ga` | Stage current hunk |
+| `,gu` | Undo current hunk |
+| `,gn` | Next hunk |
+| `,gp` | Previous hunk |
+| `,gb` | Open current line in GitHub browser |
+| `v{motion},gb` | Open selection range in GitHub browser |
 
-## miscellaneous
+## Navigation / jumps
+
+| Chord | Action |
+|---|---|
+| `<C-o>` | Jump back |
+| `<C-i>` | Jump forward |
+| `:ju` | Show jump list |
+| `<C-^>` | Previous file |
+
+See `:h jump-motions` for the full list of motion-class jumps.
+
+## File navigation
+
+| Chord | Action |
+|---|---|
+| `gf` | Go to file under cursor |
+| `<C-w>f` | Open file under cursor in split |
+| `<C-f>` | fzf over all files |
+| `<C-p>` | fzf over git-tracked files |
+| `<C-x>` (inside fzf) | Open in horizontal split |
+| `<C-v>` (inside fzf) | Open in vertical split |
+| `<C-t>` (inside fzf) | Open in new tab |
