@@ -1,0 +1,16 @@
+{{- $name    := promptStringOnce . "name" "Full name" -}}
+{{- $email   := promptStringOnce . "email" "Email" -}}
+{{- $editor  := promptChoiceOnce . "editor" "Preferred editor" (list "nvim" "code" "zed") -}}
+{{- $machine := promptStringOnce . "machine" "Machine label (e.g. personal-mac, work-mac, ubuntu-pc)" -}}
+
+[data]
+    name    = {{ $name | quote }}
+    email   = {{ $email | quote }}
+    editor  = {{ $editor | quote }}
+    machine = {{ $machine | quote }}
+
+[edit]
+    command = {{ $editor | quote }}
+
+[diff]
+    pager = "delta"

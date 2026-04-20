@@ -1,0 +1,40 @@
+# Secrets — never managed by chezmoi, kept per-machine
+.config/fish/secrets.fish
+.config/fish/secrets.fish.example
+
+# macOS cruft
+**/.DS_Store
+
+# Karabiner auto-backups
+.config/karabiner/automatic_backups/**
+
+# Claude ephemeral / machine-local state
+.claude/.credentials.json
+.claude/history.jsonl
+.claude/sessions/**
+.claude/session-env/**
+.claude/shell-snapshots/**
+.claude/cache/**
+.claude/paste-cache/**
+.claude/backups/**
+.claude/file-history/**
+.claude/telemetry/**
+.claude/tasks/**
+.claude/plans/**
+.claude/plugins/**
+.claude/mcp-needs-auth-cache.json
+.claude/settings.json.bak
+.claude/settings.json.orig
+.claude/settings.local.json
+.claude/get-shit-done/**
+.claude/gsd-file-manifest.json
+
+# Claude project sessions are per-machine; only memory/ is shared
+.claude/projects/*/!(memory)/**
+.claude/projects/*/*.jsonl
+
+# Platform-specific (render only on matching OS)
+{{- if ne .chezmoi.os "darwin" }}
+.hammerspoon/**
+.config/karabiner/**
+{{- end }}
