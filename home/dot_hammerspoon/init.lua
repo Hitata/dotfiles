@@ -35,7 +35,7 @@ end)
 
 -- shortkey to application
 Hyper:bind({}, '1', function()
-  App.launchOrFocus('Terminal')
+  App.launchOrFocus('Ghostty')
 end)
 
 Hyper:bind({}, '2', function()
