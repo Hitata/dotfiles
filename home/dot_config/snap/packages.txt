@@ -4,11 +4,22 @@
 # Coding
 code --classic
 
+# Terminal
+ghostty --classic
+
 # Work
 slack --classic
+zoom-client
 
 # Messaging
 telegram-desktop
 
 # Notes
 notion-snap-reborn
+obsidian --classic
+
+# Media
+vlc
+
+# Games
+steam
