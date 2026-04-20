@@ -73,6 +73,9 @@ cask "stats"
 # Launchers / input utilities
 cask "raycast"
 
+# Terminal
+cask "ghostty"
+
 # Coding
 cask "visual-studio-code"
 cask "intellij-idea-ce"

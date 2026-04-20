@@ -1,0 +1,35 @@
+# Appearance
+theme = catppuccin-mocha
+font-family = "Hack Nerd Font Mono"
+font-size = 14
+adjust-cell-height = 10%
+
+# Transparent-over-browser — tweak opacity to taste (0.0–1.0)
+background-opacity = 0.82
+background-blur = 20
+macos-titlebar-style = transparent
+
+# Window
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+window-save-state = always
+macos-option-as-alt = true
+
+# Behavior
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+confirm-close-surface = false
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Clipboard — let tmux OSC 52 through to the system clipboard (local + SSH)
+clipboard-read = allow
+clipboard-write = allow
+
+# Quick drop-down terminal (Cmd+`)
+keybind = global:cmd+grave_accent=toggle_quick_terminal

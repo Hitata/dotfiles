@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Re-runs when the Brewfile changes — hash pinned below.
+# Manifest hash: {{ include "dot_config/brew/Brewfile" | sha256sum }}
+set -euo pipefail
+
+MANIFEST="${HOME}/.config/brew/Brewfile"
+[[ -f "$MANIFEST" ]] || exit 0
+
+if ! command -v brew >/dev/null 2>&1; then
+    echo "run_onchange_install-brew: brew not found on PATH — skipping"
+    exit 0
+fi
+
+echo "==> brew bundle from $MANIFEST"
+brew bundle --file="$MANIFEST"
