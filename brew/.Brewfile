@@ -27,7 +27,6 @@ cask "karabiner-elements"
 cask "stats"
 
 # coding
-cask "kitty"
 cask "visual-studio-code"
 cask "intellij-idea-ce"
 cask "font-hack-nerd-font" # Add nerd font

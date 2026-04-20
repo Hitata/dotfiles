@@ -28,7 +28,6 @@ sudo snap install --classic code
 fish
 chsh -s /usr/bin/fish
 stow -vSt ~ fish
-stow -vSt ~ kitty
 
 ## install node and pnpm
 sudo apt install curl -y

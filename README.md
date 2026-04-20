@@ -37,7 +37,6 @@ chsh -s $(which fish)
 # go to dotfile directory and symlink using stow
 ```
 stow brew
-stow kitty
 stow tmux
 stow karabiner
 ```
@@ -130,7 +129,6 @@ preference setup: [(battery_percent, housrs), network_in_out, disk_bar, gpu_bar,
 - [x] nvim
 - [x] fish
 - [x] tmux
-- [x] kitty
 - [x] hammerspoon
 
 ## description format
