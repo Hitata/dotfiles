@@ -16,11 +16,13 @@ softwareupdate --install-rosetta
 [apple support reference](https://support.apple.com/en-us/HT211861)
 
 # Change to fish
-## Symlink fish config 
-make sure symlink first before entering `fish` which generate folder and files in `.config`
+## Apply fish config via chezmoi
+Fish config is managed by chezmoi (see [Migration plan #1](https://github.com/Hitata/dotfiles/issues/1)). Run once to bootstrap:
 ```
-stow fish
+./install.sh
 ```
+Then `chezmoi apply` any time after pulling changes.
+
 ## add brew to $PATH
 [stackoverflow reference](https://stackoverflow.com/questions/66724016/my-fish-is-blind-fish-does-not-recognise-any-commands-after-setting-it-as-defa)
 ```
