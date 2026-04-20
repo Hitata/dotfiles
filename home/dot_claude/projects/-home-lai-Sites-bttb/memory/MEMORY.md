@@ -1,6 +1,0 @@
-- [User profile](user_profile.md) — lai, solo dev on bttb, Canh Ngọ birth chart fixture, bilingual VN+EN dictation
-- [Collaboration style](feedback_collaboration_style.md) — Decide and execute; no 1-by-1 questions; no pre-build demos
-- [Execution preference](feedback_execution_preference.md) — Always subagent-driven with Sonnet, never ask
-- [Writing & teaching style](feedback_writing_and_teaching_style.md) — Show derivations, interactive viz, VN terms, natural VN copy
-- [Project vision](project_vision_and_stakeholders.md) — Multi-system astrology app; admin/client split; Supabase prod only; darsana.trungth.com via Cloudflare Tunnel
-- [External sources](reference_external_sources.md) — lyso.vn, huyencodieuly, Obsidian, /tuvi folder vs /tu-vi route
