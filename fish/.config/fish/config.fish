@@ -57,7 +57,6 @@ alias tc "v $TMUX_DIR/tmux.conf"
 alias bc "v $DOTFILE_DIR/brew/.Brewfile"
 alias bi "brew bundle --global"
 alias brew_cleanup "brew bundle cleanup --global"
-alias clauded="claude --dangerously-skip-permissions"
 
 if status is-interactive
   # cd $SITE_DIR # conflicts with 'tmux new -c' session
