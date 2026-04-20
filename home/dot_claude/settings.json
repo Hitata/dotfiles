@@ -106,7 +106,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "npx -y ccstatusline@latest",
+    "command": "bash $HOME/.claude/statusline.sh",
     "padding": 0
   },
   "enabledPlugins": {
