@@ -4,144 +4,155 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "supabase/tap"
 
-# brew "coreutils" # cat, ls, rm
-brew "curl"
-brew "git"
-brew "stow"
-brew "openssl"
-brew "wget"
-brew "tmux"
+# ──────────────────────────────────────────────────────────────
+# BREWS
+# ──────────────────────────────────────────────────────────────
+
+# Core shell + terminal
 brew "fish"
 brew "fisher"
+brew "tmux"
+brew "curl"
+brew "wget"
+brew "git"
+brew "chezmoi"      # dotfile manager (replaced stow)
+brew "openssl"
+# brew "coreutils" # cat, ls, rm
 
-brew "exa" # improved ls with color
+# Modern CLI replacements
+brew "exa"          # improved ls with color
+brew "bat"          # smarter cat with syntax
+brew "fd"           # faster, colorized find
+brew "fzf"          # fuzzy search
 # brew "ripgrep"
-brew "fzf" # fuzzy search
-brew "bat" # smarter cat, syntax
-brew "fd" # faster colorized find
 
-# Keybinding
+# Dev CLIs
+brew "jq"                       # json processor
+brew "gh"                       # github cli
+brew "cloudflared"              # cloudflare tunnel daemon
+brew "cloudflare-wrangler"      # cloudflare workers / pages deploy
+brew "supabase/tap/supabase"    # supabase cli
+# playwright — install per-project via `npm install -D playwright` (brew formula is stale)
+# brew "mas"          # mac app store cli
+# brew "libpq"        # postgres client
+# brew "pgcli"
+# brew "awscli"
+# brew "golang-migrate"
+
+# Editor
+brew "neovim"
+# brew "tree-sitter"
+# brew "luajit", args: ["HEAD"]   # no bottle for Apple Silicon
+
+# Node toolchain
+brew "fnm"          # node version manager
+brew "pnpm"         # node package manager
+brew "yarn"
+
+# Language runtimes
+brew "rust"
+
+# Media CLIs
+brew "mpv"
+brew "yt-dlp"
+
+# System metrics
+brew "vnstat"
+
+# ──────────────────────────────────────────────────────────────
+# CASKS
+# ──────────────────────────────────────────────────────────────
+
+# Keybinding / system tweaks
 cask "hammerspoon"
 cask "karabiner-elements"
 cask "stats"
 
-# coding
-cask "kitty"
+# Launchers / input utilities
+cask "raycast"
+
+# Coding
 cask "visual-studio-code"
 cask "intellij-idea-ce"
-cask "font-hack-nerd-font" # Add nerd font
+cask "docker"
+cask "font-hack-nerd-font"
+# cask "android-studio"
+# cask "github"
 
-# language setup
-brew "yarn"
-brew "pnpm" # node package manager
-brew "fnm" # node version manager
-
-# Nvim related
-brew "neovim"
-# brew "tree-sitter"
-# brew "luajit", args: ["HEAD"] # no bottle for Apple Silicon
-
-# necessary
-cask "raycast"
-cask "keycastr"
-
-## work related
+# Work
 cask "slack"
 cask "zoom"
 cask "google-chrome"
 cask "google-drive"
 
-brew "jq" # jq json processor
-# brew "mas" # mac app store command line
+# Messaging
+cask "telegram"
+# cask "discord"
+# cask "messenger"
+# cask "zalo" # install separate
 
-# CLIs, Dev tools
-# brew "libpq" # postgre cli
-# brew "pgcli"
-brew "gh" # github cli
-# cask "github"
-# brew "awscli"
-cask "docker"
-# brew "golang-migrate"
-
-cask "vlc"
-
-brew "rust"
-brew "mpv"
-brew "cmus"
-brew "yt-dlp"
-brew "pulseaudio"
-
-cask "discord"
-
+# Notes / knowledge
 cask "notion"
 cask "obsidian"
 
-# cask "messenger"
-# cask "zalo" # install separate
-cask "telegram"
-
-cask "kap"
-
-# Design Tool
-# cask "inkscape"
-cask "figma"
-# cask "darktable"
-# cask "digikam" # todo: manage photo
-cask "handbrake"
-
-# Should install
-cask "1password"
-cask "1password-cli"
+# Browsers
+cask "brave-browser"
 # cask "firefox"
 # cask "firefox-developer-edition"
 
-# Stuff
-cask "brave-browser"
+# Media playback
+cask "vlc"
+cask "spotify"
+
+# Screen capture / video
+cask "kap"
+# cask "obs"
+cask "handbrake"
+
+# Design / creative
+# cask "figma"
+# cask "canva"
+# cask "inkscape"
+# cask "darktable"
+# cask "digikam" # todo: manage photo
+
+# Office / language
+# cask "adobe-acrobat-reader"
+# cask "deepl"
+
+# Finance
+# cask "tradingview"
+
+# Auth / secrets
+cask "1password"
+cask "1password-cli"
+
+# Torrent / downloads
 cask "qbittorrent"
 
 # Games
 cask "steam" # new age, no more dota 2 for now
 
-cask "adobe-acrobat-reader"
-# cask "android-studio"
-
-cask "deepl"
-cask "canva"
-
-cask "shortcat"
-
-cask "anki"
-
-cask "cyberghost-vpn"
-#
-# Window boot
-cask "wine-stable"
-brew "wimlib"
-cask "the-unarchiver"
-
-cask "obs"
-cask "tradingview"
-cask "spotify"
-
-brew "vnstat"
-
-# Should see if really needed?
+# ──────────────────────────────────────────────────────────────
+# DEFERRED — uncomment to install
+# ──────────────────────────────────────────────────────────────
 # brew "autoconf"
 # brew "gawk"
 # brew "gnupg"
-
 # cask "dash"
 # cask "grid-clock"
 # cask "font-ia-writer-quattro"
 # cask "font-ibm-plex"
 # cask "font-jetbrains-mono"
 
-# WTF is this?
+# ──────────────────────────────────────────────────────────────
+# MAC APP STORE
+# ──────────────────────────────────────────────────────────────
 # mas "Deliveries", id: 924726344
 # mas "Drafts", id: 1435957248
 # mas "MindNode", id: 1289197285
 # mas "Reeder", id: 1529448980
 # mas "Things", id: 904280696
 # mas "Tweetbot", id: 1384080005
-

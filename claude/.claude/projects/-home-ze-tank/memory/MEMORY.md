@@ -1,1 +1,0 @@
-- [Refer to dotfiles for tool/config questions](feedback_dotfiles_reference.md) — check ~/dotfiles (and TMUX_KEYMAP.md / VIM_KEYMAP.md) before giving generic keybinding/config answers

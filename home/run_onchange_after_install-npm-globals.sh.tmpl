@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Re-runs when the manifest changes — hash pinned below.
+# Manifest hash: {{ include "dot_config/npm/globals.txt" | sha256sum }}
+set -euo pipefail
+
+MANIFEST="${HOME}/.config/npm/globals.txt"
+[[ -f "$MANIFEST" ]] || exit 0
+
+if ! command -v npm >/dev/null 2>&1; then
+    echo "run_onchange_install-npm-globals: npm not found on PATH — skipping"
+    exit 0
+fi
+
+pkgs=$(grep -vE '^\s*(#|$)' "$MANIFEST" || true)
+[[ -z "$pkgs" ]] && exit 0
+
+echo "==> Installing npm globals from $MANIFEST"
+# shellcheck disable=SC2086
+npm install -g $pkgs

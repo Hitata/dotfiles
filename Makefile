@@ -6,26 +6,12 @@ NVIM          := $(BREW_BIN)/nvim
 STOW          := $(BREW_BIN)/stow
 GIT           := $(BREW_BIN)/git
 
-STOW_PKGS     := nvim 
-#STOW_PKGS     := emacs fish git kitty nvim starship tmux
+STOW_PKGS     := nvim
+#STOW_PKGS     := emacs fish git nvim starship tmux
 
-all: fish tmux neovim karabiner hammerspoon brew kitty claude
+all: brew
 	@echo "install all"
-fish:
-	@echo "symlink fish"
-	stow fish
-tmux:
-	@echo "symlink tmux"
-	stow tmux
-neovim:
-	stow -vSt ~ neovim
-karabiner:
-	stow -vSt ~ karabiner
-hammerspoon:
-	stow -vSt ~ hammerspoon 
+# fish, tmux, nvim, karabiner, hammerspoon, claude, npm globals → chezmoi apply
+# Brewfile is invoked by path — no symlink required.
 brew:
-	stow -vSt ~ brew
-kitty:
-	stow -vSt ~ kitty
-claude:
-	stow -vSt ~ claude
+	$(BREW) bundle --file=$(CURDIR)/brew/.Brewfile

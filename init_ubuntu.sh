@@ -1,4 +1,3 @@
-sudo apt install kitty
 sudo apt install fish
 sudo apt install tmux
 sudo apt install neovim

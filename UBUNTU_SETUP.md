@@ -12,7 +12,7 @@ sudo apt install -y curl git
 ## 2. Terminal / shell stack
 
 ```bash
-sudo apt install -y kitty fish tmux neovim fzf
+sudo apt install -y fish tmux neovim fzf
 ```
 
 Set fish as the default login shell:

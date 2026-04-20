@@ -51,3 +51,4 @@ When giving feedback, speak as an advisor to a sovereign — challenge as strate
 - If something seems scattered, look for the parallel thread before flagging it
 - When he externalizes thinking, help him find what's already there — don't impose structure
 - One question at a time if clarification is needed
+- When he asks about command-line tool settings, keybindings, or shortcuts (tmux, vim/neovim, fish, hammerspoon, karabiner, etc.), check `~/dotfiles` first — start with `~/dotfiles/TMUX_KEYMAP.md`, `VIM_KEYMAP.md`, `YOUTUBE_KEYMAP.md`, then the full configs. His bindings differ from defaults (e.g., tmux prefix is `C-a`).

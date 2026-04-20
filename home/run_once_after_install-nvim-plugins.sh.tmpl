@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# One-time bootstrap: install packer.nvim then sync all plugins.
+# Runs once per chezmoi state. Safe to re-fire by clearing state.
+set -euo pipefail
+
+if ! command -v nvim >/dev/null 2>&1; then
+    echo "run_once_install-nvim-plugins: nvim not on PATH — skipping"
+    exit 0
+fi
+
+PACKER_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/packer/start/packer.nvim"
+
+if [[ ! -d "$PACKER_DIR" ]]; then
+    echo "==> Cloning packer.nvim into $PACKER_DIR"
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim "$PACKER_DIR"
+fi
+
+echo "==> Running :PackerSync (headless)"
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' || true

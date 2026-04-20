@@ -35,8 +35,7 @@ end)
 
 -- shortkey to application
 Hyper:bind({}, '1', function()
-  App.launchOrFocusByBundleID('net.kovidgoyal.kitty')
-  -- App.launchOrFocus('ChatGPT')
+  App.launchOrFocus('Terminal')
 end)
 
 Hyper:bind({}, '2', function()
