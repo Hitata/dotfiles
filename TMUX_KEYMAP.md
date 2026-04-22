@@ -17,7 +17,7 @@ Prefix: `C-a` (rebound from `C-b`). Config: `home/dot_config/tmux/tmux.conf`.
 
 | Chord | Action |
 |---|---|
-| `<C-a> \` | Split horizontal (inherits current path) |
+| `<C-a> 0` | Split horizontal — open right pane (inherits current path) |
 | `<C-a> -` | Split vertical (inherits current path) |
 | `<C-a> h/j/k/l` | Move focus (vim-style) |
 | `<C-a> H/J/K/L` | Resize pane by 5 |
