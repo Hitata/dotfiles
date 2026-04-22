@@ -1,12 +1,15 @@
 # Appearance
-theme = Catppuccin Mocha
+theme = Snazzy
 font-family = "Hack Nerd Font Mono"
 font-size = 14
 adjust-cell-height = 10%
 
 # Transparent-over-browser — tweak opacity to taste (0.0–1.0)
-background-opacity = 0.45
-background-blur = 20
+background = 0a0c10
+background-opacity = 0.69
+background-blur = 0
+bold-is-bright = true
+minimum-contrast = 2.5
 macos-titlebar-style = transparent
 
 # Window
