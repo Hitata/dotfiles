@@ -6,3 +6,5 @@ Cross-project memories. Project-specific memories live under `~/.claude/projects
 - [feedback_subagent_default.md](feedback_subagent_default.md) — when executing a plan via superpowers, default to subagent-driven + Sonnet without asking
 - [feedback_hook_vs_memory.md](feedback_hook_vs_memory.md) — deterministic/visible → hook; probabilistic/judgment → memory
 - [feedback_github_issues.md](feedback_github_issues.md) — use `owner/repo#N` format; log decisions as issue comments proactively
+- [user_knowledge_stance.md](user_knowledge_stance.md) — knowledge is additive; no "behind"; forward = depth into self-claimed threads, not breadth-chasing
+- [user_social_architecture.md](user_social_architecture.md) — "made up character" / mystery by design; per-dyad depth; group = shallow register to protect 1:1 threads
