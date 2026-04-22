@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# GNOME gsettings tweaks for Ubuntu.
+# Re-runs when this script changes. Idempotent — `gsettings set` is safe to re-apply.
+set -euo pipefail
+
+if [[ "$(uname)" != "Linux" ]] || ! command -v gsettings &>/dev/null; then
+    exit 0
+fi
+
+step() { echo ""; echo "── $* ──"; }
+
+# ── Display / text ───────────────────────────────────────────
+# 1.5× text scaling compensates for 4K on 27" without forcing
+# Wayland-only fractional display scaling.
+step "Display / text"
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+
+echo ""
+echo "==> GNOME settings applied"
