@@ -33,6 +33,7 @@ brew "gh"                       # github cli
 brew "cloudflared"              # cloudflare tunnel daemon
 brew "cloudflare-wrangler"      # cloudflare workers / pages deploy
 brew "supabase/tap/supabase"    # supabase cli
+brew "croc"                     # p2p file transfer between machines
 # playwright — install per-project via `npm install -D playwright` (brew formula is stale)
 # brew "mas"          # mac app store cli
 # brew "libpq"        # postgres client
