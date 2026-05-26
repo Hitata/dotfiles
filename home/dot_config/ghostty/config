@@ -36,3 +36,7 @@ clipboard-write = allow
 
 # Quick drop-down terminal (Cmd+`)
 keybind = global:cmd+grave_accent=toggle_quick_terminal
+
+# Auto-attach to tmux. `-A` attaches if `main` exists, else creates it.
+# Persists Claude Code + layouts across reboot when paired with continuum.
+command = tmux new-session -A -s main

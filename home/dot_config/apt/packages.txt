@@ -35,3 +35,6 @@ usb-creator-gtk
 # Vietnamese input (IBus Bamboo — see https://gist.github.com/lelinhtinh/fc660f3222a1da1b7ff923a4080742e5)
 ibus
 ibus-bamboo
+
+# SSH server — for remote tmux attach to this machine as a home server
+openssh-server

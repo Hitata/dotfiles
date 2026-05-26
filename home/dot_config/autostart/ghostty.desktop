@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Ghostty
+Comment=Auto-launch Ghostty at login (home-server desktop)
+Exec=ghostty
+Terminal=false
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
