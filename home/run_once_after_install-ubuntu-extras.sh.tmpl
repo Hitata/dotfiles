@@ -42,6 +42,19 @@ else
     curl -fsS https://dl.brave.com/install.sh | sh
 fi
 
+# ── Google Chrome (official .deb — postinst wires up apt repo) ──
+step "Google Chrome"
+if command -v google-chrome >/dev/null 2>&1 || command -v google-chrome-stable >/dev/null 2>&1; then
+    echo "  · already installed"
+elif [[ "$(dpkg --print-architecture)" != "amd64" ]]; then
+    echo "  · skipping — Chrome for Linux is amd64 only"
+else
+    tmpdeb=$(mktemp --suffix=.deb)
+    curl -fsSL -o "$tmpdeb" https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo apt-get install -y "$tmpdeb"
+    rm -f "$tmpdeb"
+fi
+
 # ── cloudflared (APT via Cloudflare repo) ────────────────────
 step "cloudflared"
 if command -v cloudflared >/dev/null 2>&1; then
@@ -75,6 +88,33 @@ if ! id -nG "$USER" | grep -qw docker; then
     echo "  + adding $USER to docker group (re-login required)"
     sudo usermod -aG docker "$USER"
 fi
+
+# ── Mullvad VPN (APT via Mullvad repo) ───────────────────────
+step "Mullvad VPN"
+if command -v mullvad >/dev/null 2>&1; then
+    echo "  · already installed"
+else
+    sudo curl -fsSLo /usr/share/keyrings/mullvad-keyring.asc \
+        https://repository.mullvad.net/deb/mullvad-keyring.asc
+    echo "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch=$(dpkg --print-architecture)] https://repository.mullvad.net/deb/stable $(lsb_release -cs) main" \
+        | sudo tee /etc/apt/sources.list.d/mullvad.list > /dev/null
+    sudo apt-get update -qq
+    sudo apt-get install -y mullvad-vpn
+    echo "  → log in with: mullvad account login <account-number>"
+fi
+
+# ── tmux boot persistence (linger + reload tmux for continuum-boot) ──
+# continuum writes ~/.config/systemd/user/tmux.service on tmux start when
+# @continuum-boot is 'on'. Linger lets that user unit run without an active
+# login — required for a headless home server to auto-restore tmux on reboot.
+step "tmux boot persistence"
+if loginctl show-user "$USER" 2>/dev/null | grep -q "Linger=yes"; then
+    echo "  · linger already enabled"
+else
+    echo "  + enabling linger for $USER (sudo)"
+    sudo loginctl enable-linger "$USER"
+fi
+echo "  → after first tmux session, verify: systemctl --user status tmux.service"
 
 echo ""
 echo "==> Ubuntu extras bootstrap complete"
