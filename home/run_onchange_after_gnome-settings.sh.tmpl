@@ -15,5 +15,15 @@ step() { echo ""; echo "── $* ──"; }
 step "Display / text"
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 
+# ── Vietnamese input (IBus Bamboo) ───────────────────────────
+# Enables US + Bamboo as input sources and per-window switching,
+# so terminals stay English while chat/docs apps remember Vietnamese.
+if dpkg -s ibus-bamboo &>/dev/null; then
+    step "Input sources (IBus Bamboo)"
+    gsettings set org.gnome.desktop.input-sources sources "[('xkb','us'),('ibus','Bamboo')]"
+    gsettings set org.gnome.desktop.input-sources per-window true
+    command -v ibus &>/dev/null && ibus restart &>/dev/null || true
+fi
+
 echo ""
 echo "==> GNOME settings applied"
