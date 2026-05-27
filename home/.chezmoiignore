@@ -30,7 +30,12 @@
 .claude/gsd-file-manifest.json
 .claude/debug/**
 .claude/downloads/**
-.claude/skills/**
+# Skills: ignore everything *except* personal ones we explicitly carve out.
+# Chezmoi negation works per-line; the catch-all goes first, then the negations.
+.claude/skills/*
+.claude/skills/*/*
+!.claude/skills/focused-read
+!.claude/skills/focused-read/*
 .claude/statsig/**
 .claude/statsig.*
 .claude/stats-cache.json
