@@ -13,6 +13,14 @@ Reading-assist skill that produces an HTML viewer with a "Highlight ON/OFF" togg
 - User says: "read this", "focused read", "adhd read", "help me read", "make this readable", "highlight this article"
 - User wants an Obsidian-friendly highlighted version of long-form text
 
+## Modes
+
+**Desktop mode (default).** Extract → highlight Markdown → render `<slug>.html` → `xdg-open` in browser. Saves both `.plain.md` and `.highlight.md` to `~/second-mind/reads/`.
+
+**Chat / mobile mode.** Triggered when the user says any of: "on mobile", "in chat", "no browser", "just bold it", "remote", "phone", OR when the input is short pasted text (< 800 words) rather than a URL. Skip the file-writing and HTML rendering entirely. Just produce the highlighted Markdown *inline in your reply* — the mobile/web chat UI renders `**bold**` natively. Optionally also save `~/second-mind/reads/<slug>.highlight.md` if the user asks. Do NOT call `render.py` or `xdg-open` in this mode.
+
+**Hybrid.** If user is on mobile but wants a saved copy too (Obsidian sync, etc.), output bolded text inline AND write the `.highlight.md` file. Skip HTML.
+
 ## What NOT to do
 
 - Do NOT bold the first half of each word (Bionic Reading) — refuted
