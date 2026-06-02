@@ -89,6 +89,15 @@ if ! id -nG "$USER" | grep -qw docker; then
     sudo usermod -aG docker "$USER"
 fi
 
+# ── Tailscale (APT via Tailscale repo) ───────────────────────
+step "Tailscale"
+if command -v tailscale >/dev/null 2>&1; then
+    echo "  · already installed"
+else
+    curl -fsSL https://tailscale.com/install.sh | sh
+    echo "  → log in with: sudo tailscale up --hostname=<this-machine>"
+fi
+
 # ── Mullvad VPN (APT via Mullvad repo) ───────────────────────
 step "Mullvad VPN"
 if command -v mullvad >/dev/null 2>&1; then

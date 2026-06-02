@@ -38,3 +38,6 @@ ibus-bamboo
 
 # SSH server — for remote tmux attach to this machine as a home server
 openssh-server
+
+# Mosh — roaming UDP-based shell, survives network switches (mobile-friendly)
+mosh
