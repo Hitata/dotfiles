@@ -6,10 +6,7 @@ Documentation=man:tmux(1)
 Type=forking
 Environment=DISPLAY=:0
 ExecStart=/home/linuxbrew/.linuxbrew/bin/tmux new-session -d -s main
-# Explicit restore: continuum's auto-restore-on-boot doesn't fire for a
-# headless systemd start, so restore from the last snapshot ourselves —
-# only when 'main' is still the lone empty window (don't clobber a live session).
-ExecStartPost=/bin/bash -lc 'sleep 3; B=/home/linuxbrew/.linuxbrew/bin/tmux; [ "$($B list-windows -t main 2>/dev/null | wc -l)" -le 1 ] && bash /home/ze-tank/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh; exit 0'
+# Restore is handled by tmux-restore.service (runs after the server is calm).
 
 ExecStop=/bin/sh -c '/home/linuxbrew/.linuxbrew/bin/tmux has-session 2>/dev/null && /home/ze-tank/.config/tmux/plugins/tmux-resurrect/scripts/save.sh; exit 0'
 ExecStop=/bin/sh -c '/home/linuxbrew/.linuxbrew/bin/tmux kill-server 2>/dev/null; exit 0'
