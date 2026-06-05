@@ -1,19 +1,23 @@
 [Unit]
-Description=tmux default session (detached)
+Description=tmux server with persistent 'main' session
 Documentation=man:tmux(1)
 
 [Service]
-Type=forking
+# oneshot + RemainAfterExit is the correct model for spawning a detached
+# daemon: `new-session -d` forks the tmux server and returns. With Type=forking
+# systemd guessed (wrongly) which forked PID to track as "main"; when restore.sh
+# juggled sessions that PID exited and systemd tore down the whole server
+# (KillMode=control-group). oneshot tracks no main PID, so the daemonized server
+# is left running until an explicit stop.
+Type=oneshot
+RemainAfterExit=yes
 Environment=DISPLAY=:0
 ExecStart=/home/linuxbrew/.linuxbrew/bin/tmux new-session -d -s main
-# Restore is handled by tmux-restore.service (runs after the server is calm).
 
+# On stop: save current layout (only if a server is alive), then kill it.
+# Both guarded to always exit 0 so a clean stop never flaps.
 ExecStop=/bin/sh -c '/home/linuxbrew/.linuxbrew/bin/tmux has-session 2>/dev/null && /home/ze-tank/.config/tmux/plugins/tmux-resurrect/scripts/save.sh; exit 0'
 ExecStop=/bin/sh -c '/home/linuxbrew/.linuxbrew/bin/tmux kill-server 2>/dev/null; exit 0'
-KillMode=control-group
-
-Restart=on-failure
-RestartSec=2
 
 [Install]
 WantedBy=default.target

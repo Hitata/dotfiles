@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
-# Restore the saved tmux 'main' session ONCE THE BOOT STORM HAS PASSED.
+# Restore the saved tmux 'main' session at boot, once the server is up.
 #
-# Root cause this guards against: tmux-resurrect's restore.sh fires ~30 rapid
-# new-window/split-window/display-message calls. During the boot storm (GNOME,
-# Ghostty, services all starting; load average > 2) those spawns fail and
-# cascade ("server exited unexpectedly", restore.sh:155 unary error), aborting
-# to a single empty window. The very same restore succeeds reliably once the
-# system is calm. So: wait for calm, THEN restore, with patient retries.
-#
-# This is the ONLY restorer (continuum @continuum-restore is off). The tmux
-# server itself is brought up separately by tmux.service; Ghostty only attaches.
+# The hard bug was NOT here: tmux.service used Type=forking, so systemd tracked
+# the wrong PID and tore the whole server down the moment restore.sh juggled
+# sessions ("server exited unexpectedly"). With tmux.service now Type=oneshot +
+# RemainAfterExit, the server is stable and restore just works. This script
+# only needs to wait for the server, then run restore (with a couple of retries
+# for any transient boot churn). Single restorer — continuum @continuum-restore
+# is off. Ghostty does not autostart; the user attaches manually.
 set -u
 
 TMUX_BIN=/home/linuxbrew/.linuxbrew/bin/tmux
@@ -18,12 +16,10 @@ LOG=/home/ze-tank/.tmux/resurrect/boot-restore.log
 
 log() { echo "$(date '+%F %T') $*" >>"$LOG" 2>/dev/null; }
 win_count() { $TMUX_BIN list-windows -t main 2>/dev/null | wc -l; }
-load1() { awk '{print $1}' /proc/loadavg; }            # 1-min load average
-load_ok() { awk '{exit !($1 < 1.5)}' /proc/loadavg; }  # true when load < 1.5
 
-log "=== boot-restore start (load=$(load1)) ==="
+log "=== boot-restore start ==="
 
-# 1. Wait (<=60s) until the server answers and 'main' exists.
+# Wait (<=60s) for the server to be up and 'main' to exist.
 for _ in $(seq 1 60); do
 	$TMUX_BIN has-session -t main 2>/dev/null && break
 	sleep 1
@@ -33,24 +29,15 @@ if ! $TMUX_BIN has-session -t main 2>/dev/null; then
 	exit 0
 fi
 
-# 2. Don't clobber an already-populated session (>=2 windows).
+# Don't clobber an already-populated session.
 if [ "$(win_count)" -gt 1 ]; then
 	log "already populated ($(win_count) windows), nothing to do"
 	exit 0
 fi
 
-# 3. Wait for the boot storm to pass: load average < 1.5, or a 150s hard cap.
-for _ in $(seq 1 150); do
-	load_ok && break
-	sleep 1
-done
-log "storm settled (load=$(load1)), restoring"
-sleep 2
-
-# 4. Restore, retrying patiently (covers any residual churn). Stop as soon as
-#    'main' has more than the lone empty window.
-for attempt in $(seq 1 10); do
-	log "restore attempt $attempt (load=$(load1))"
+# Restore, with a few retries for transient boot churn.
+for attempt in 1 2 3 4 5; do
+	log "restore attempt $attempt"
 	bash "$RESTORE" >>"$LOG" 2>&1
 	sleep 3
 	wins=$(win_count)
@@ -59,8 +46,8 @@ for attempt in $(seq 1 10); do
 		log "restore OK ($wins windows)"
 		exit 0
 	fi
-	sleep 5
+	sleep 3
 done
 
-log "restore FAILED after 10 attempts (load=$(load1))"
+log "restore FAILED after 5 attempts"
 exit 0
