@@ -11,6 +11,7 @@ ExecStop=/home/ze-tank/.config/tmux/plugins/tmux-resurrect/scripts/save.sh
 ExecStop=/home/linuxbrew/.linuxbrew/bin/tmux kill-server
 KillMode=control-group
 
+Restart=on-failure
 RestartSec=2
 
 [Install]
