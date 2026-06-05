@@ -7,8 +7,8 @@ Type=forking
 Environment=DISPLAY=:0
 ExecStart=/home/linuxbrew/.linuxbrew/bin/tmux new-session -d -s main
 
-ExecStop=/home/ze-tank/.config/tmux/plugins/tmux-resurrect/scripts/save.sh
-ExecStop=/home/linuxbrew/.linuxbrew/bin/tmux kill-server
+ExecStop=/bin/sh -c '/home/linuxbrew/.linuxbrew/bin/tmux has-session 2>/dev/null && /home/ze-tank/.config/tmux/plugins/tmux-resurrect/scripts/save.sh; exit 0'
+ExecStop=/bin/sh -c '/home/linuxbrew/.linuxbrew/bin/tmux kill-server 2>/dev/null; exit 0'
 KillMode=control-group
 
 Restart=on-failure
