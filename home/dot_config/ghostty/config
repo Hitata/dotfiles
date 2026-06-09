@@ -7,7 +7,9 @@ adjust-cell-height = 10%
 # Transparent-over-browser — tweak opacity to taste (0.0–1.0)
 # NOTE: no explicit `background =` here — let the theme set it so light mode
 # isn't forced dark. Opacity/blur still apply over whichever theme is active.
-background-opacity = 0.69
+# Opacity is GLOBAL (Ghostty can't set it per light/dark theme). Raised from
+# 0.69 → 0.92 so the light theme stays legible instead of washing out.
+background-opacity = 0.92
 background-blur = 0
 bold-is-bright = true
 minimum-contrast = 2.5
