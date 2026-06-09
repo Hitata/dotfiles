@@ -1,11 +1,12 @@
-# Appearance
-theme = Snazzy
+# Appearance — auto-switches with macOS light/dark mode (live, no restart)
+theme = light:Catppuccin Latte,dark:Snazzy
 font-family = "Hack Nerd Font Mono"
 font-size = 14
 adjust-cell-height = 10%
 
 # Transparent-over-browser — tweak opacity to taste (0.0–1.0)
-background = 0a0c10
+# NOTE: no explicit `background =` here — let the theme set it so light mode
+# isn't forced dark. Opacity/blur still apply over whichever theme is active.
 background-opacity = 0.69
 background-blur = 0
 bold-is-bright = true
