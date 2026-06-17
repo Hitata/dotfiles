@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Copy the most recent screenshot to the clipboard (and optionally paste it).
+# Usage:
+#   recent-screenshot          # copy newest screenshot to clipboard
+#   recent-screenshot --paste  # copy, then ⌘V into the frontmost app
+#
+# Looks in the configured screenshot dir (falls back to ~/Desktop) for the
+# newest "Screenshot*" image. Mirrors Raycast's "recent screenshot" command.
+set -euo pipefail
+
+shotdir="$(defaults read com.apple.screencapture location 2>/dev/null || echo "$HOME/Desktop")"
+shotdir="${shotdir/#\~/$HOME}"
+[[ -d "$shotdir" ]] || shotdir="$HOME/Desktop"
+
+# Newest screenshot file (png/jpg), by modification time.
+latest="$(/bin/ls -t "$shotdir"/Screenshot*.png "$shotdir"/Screen\ Shot*.png \
+  "$shotdir"/Screenshot*.jpg 2>/dev/null | head -1 || true)"
+
+if [[ -z "${latest:-}" ]]; then
+  echo "No screenshot found in $shotdir" >&2
+  exit 1
+fi
+
+osascript -e "set the clipboard to (read (POSIX file \"$latest\") as «class PNGf»)"
+
+if [[ "${1:-}" == "--paste" ]]; then
+  osascript -e 'tell application "System Events" to keystroke "v" using command down'
+fi
