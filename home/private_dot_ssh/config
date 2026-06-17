@@ -1,0 +1,6 @@
+
+Host zetank
+	HostName 100.100.168.72
+	User ze-tank
+	RequestTTY yes
+	RemoteCommand tmux attach -t main

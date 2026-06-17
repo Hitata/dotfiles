@@ -71,7 +71,7 @@ cask "karabiner-elements"
 cask "stats"
 
 # Launchers / input utilities
-cask "raycast"
+# cask "raycast" # removed — switched to native Spotlight
 
 # Terminal
 cask "ghostty"
@@ -132,11 +132,14 @@ cask "handbrake"
 cask "1password"
 cask "1password-cli"
 
+# Networking / VPN
+brew "tailscale"        # mesh VPN (CLI + daemon) — reach home-server from any network
+
 # Torrent / downloads
 cask "qbittorrent"
 
 # Games
-cask "steam" # new age, no more dota 2 for now
+# cask "steam" # removed — uninstalled Steam + all games
 
 # ──────────────────────────────────────────────────────────────
 # DEFERRED — uncomment to install
