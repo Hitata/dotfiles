@@ -37,6 +37,9 @@ alias gco "git checkout"
 alias vim "nvim"
 alias v "nvim"
 
+# net
+alias zetank "ssh zetank"
+
 set -gx SITE_DIR $HOME/Sites
 set -gx DOTFILE_DIR $HOME/dotfiles
 set -gx NEOVIM_DIR $DOTFILE_DIR/neovim/.config/nvim
